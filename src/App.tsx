@@ -11,13 +11,14 @@ import AnimesPage from "./pages/AnimesPage";
 import CharactersPage from "./pages/CharactersPage";
 import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
+import AIChatbot from "./components/AIChatbot";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <FavoritesProvider>
-      <TooltipProvider>
+    <TooltipProvider>
+      <FavoritesProvider>
         <Toaster />
         <Sonner />
         <BrowserRouter>
@@ -30,9 +31,10 @@ const App = () => (
             <Route path="/anime/:animeId/character/:characterId" element={<CharacterProfile />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <AIChatbot />
         </BrowserRouter>
-      </TooltipProvider>
-    </FavoritesProvider>
+      </FavoritesProvider>
+    </TooltipProvider>
   </QueryClientProvider>
 );
 
