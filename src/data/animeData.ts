@@ -32,6 +32,36 @@ import megumiImg from '@/assets/megumi.png';
 import zenitsuImg from '@/assets/zenitsu.png';
 import inosukeImg from '@/assets/inosuke.png';
 
+// Additional character images (Wave 2)
+import tsukishimaImg from '@/assets/tsukishima.png';
+import nishinoyaImg from '@/assets/nishinoya.png';
+import tanakaImg from '@/assets/tanaka.png';
+import oikawaImg from '@/assets/oikawa.png';
+import nobaraImg from '@/assets/nobara.png';
+import sukunaImg from '@/assets/sukuna.png';
+import nanamiImg from '@/assets/nanami.png';
+import rengokuImg from '@/assets/rengoku.png';
+import giyuImg from '@/assets/giyu.png';
+import kurapikaImg from '@/assets/kurapika.png';
+import hisokaImg from '@/assets/hisoka.png';
+import leorioImg from '@/assets/leorio.png';
+import kakashiImg from '@/assets/kakashi.png';
+import itachiImg from '@/assets/itachi.png';
+import urarakaImg from '@/assets/uraraka.png';
+import aizawaImg from '@/assets/aizawa.png';
+import namiImg from '@/assets/nami.png';
+import robinImg from '@/assets/robin.png';
+import arminImg from '@/assets/armin.png';
+import erwinImg from '@/assets/erwin.png';
+import gohanImg from '@/assets/gohan.png';
+import piccoloImg from '@/assets/piccolo.png';
+import misaImg from '@/assets/misa.png';
+import ryukImg from '@/assets/ryuk.png';
+import rukiaImg from '@/assets/rukia.png';
+import aizenImg from '@/assets/aizen.png';
+import beruImg from '@/assets/beru.png';
+import jinhoImg from '@/assets/jinho.png';
+
 // Banner images
 import haikyuuBanner from '@/assets/haikyuu-banner.png';
 import soloLevelingBanner from '@/assets/solo-leveling-banner.png';
@@ -208,6 +238,121 @@ export const animeData: Anime[] = [
         quotes: ['"Aussi longtemps que je suis là, tu es invincible."', '"Les passes existent pour les attaquants."', '"Je suis un passeur. Mon travail est de connecter."'],
         achievements: ['Sélectionné pour le camp national des jeunes', 'Meilleur passeur du tournoi Spring', 'Joueur professionnel en Italie'],
         weaknesses: ['Communication interpersonnelle', 'Gestion de la frustration', 'Tendance à surcharger les coéquipiers']
+      },
+      {
+        id: 'tsukishima',
+        name: 'TSUKISHIMA KEI',
+        nativeName: '月島蛍',
+        title: 'The Intelligent Blocker',
+        role: 'Middle Blocker',
+        rank: 'ELITE',
+        image: tsukishimaImg,
+        description: 'Tsukishima est un bloqueur intelligent qui utilise son analyse tactique pour contrer les attaques adverses.',
+        fullBio: 'Grand et sarcastique, Tsukishima est devenu l\'un des meilleurs bloqueurs du tournoi grâce à son intelligence et son timing impeccable. Son évolution mentale face à Ushijima a marqué un tournant dans sa carrière.',
+        backstory: 'Frère cadet d\'Akiteru, Tsukishima a perdu sa passion pour le volleyball après avoir découvert que son frère lui avait menti sur son statut de titulaire. Cette trahison l\'a rendu cynique envers le sport.',
+        personality: ['Sarcastique', 'Intelligent', 'Froid', 'Analytique', 'Provocateur', 'Loyal (malgré tout)'],
+        stats: { power: 65, speed: 70, technique: 85, intelligence: 95, stamina: 70, agility: 75 },
+        status: { age: '16', birthday: '27 Septembre', height: '190.1 cm', weight: '68.4 kg', bloodType: 'A', status: 'Alive', occupation: 'Étudiant / Joueur de Volleyball', origin: 'Préfecture de Miyagi, Japon' },
+        affiliation: { team: 'Karasuno High School', role: 'Middle Blocker', allies: ['Yamaguchi Tadashi', 'Kageyama Tobio', 'Hinata Shouyou'] },
+        skills: [
+          { name: 'Read Block', type: 'Defense', description: 'Analyse et anticipation des attaques pour un blocage parfait.', level: 92 },
+          { name: 'Time Differential Attack', type: 'Attack', description: 'Attaque synchronisée avec retard.', level: 78 },
+          { name: 'Serve Receive', type: 'Defense', description: 'Réceptions améliorées.', level: 70 }
+        ],
+        relationships: [
+          { name: 'Yamaguchi Tadashi', type: 'Meilleur Ami', description: 'Ami d\'enfance et confident.' },
+          { name: 'Hinata Shouyou', type: 'Coéquipier', description: 'Relation conflictuelle mais respectueuse.' },
+          { name: 'Akiteru Tsukishima', type: 'Frère', description: 'Relation compliquée en reconstruction.' }
+        ],
+        quotes: ['"Qu\'est-ce qui est amusant dans un club?"', '"C\'est juste un club."', '"Un moment de gloire?"'],
+        achievements: ['MVP du match contre Shiratorizawa', 'Blocage décisif contre Ushijima', 'Évolution mentale remarquable'],
+        weaknesses: ['Manque de passion initiale', 'Provocations excessives', 'Endurance limitée']
+      },
+      {
+        id: 'nishinoya',
+        name: 'NISHINOYA YUU',
+        nativeName: '西谷夕',
+        title: 'Guardian Deity',
+        role: 'Libero',
+        rank: 'GUARDIAN',
+        image: nishinoyaImg,
+        description: 'Nishinoya est le libero de Karasuno, surnommé le "Dieu Gardien" pour ses réceptions spectaculaires.',
+        fullBio: 'Malgré sa petite taille, Nishinoya est l\'un des meilleurs liberos du pays. Son énergie explosive et ses réflexes extraordinaires font de lui le mur défensif de Karasuno.',
+        backstory: 'Nishinoya a choisi le poste de libero car il était fasciné par la position qui ne nécessite pas de grande taille. Il a perfectionné ses techniques jusqu\'à devenir légendaire dans la préfecture.',
+        personality: ['Énergique', 'Courageux', 'Loyal', 'Passionné', 'Impulsif', 'Protecteur'],
+        stats: { power: 55, speed: 92, technique: 95, intelligence: 75, stamina: 88, agility: 98 },
+        status: { age: '17', birthday: '10 Octobre', height: '159.3 cm', weight: '51.1 kg', bloodType: 'B', status: 'Alive', occupation: 'Étudiant / Libero', origin: 'Préfecture de Miyagi, Japon' },
+        affiliation: { team: 'Karasuno High School', role: 'Libero', allies: ['Tanaka Ryunosuke', 'Hinata Shouyou', 'Asahi Azumane'] },
+        skills: [
+          { name: 'Rolling Thunder', type: 'Defense', description: 'Technique de réception signature avec roulade.', level: 95 },
+          { name: 'Libero Set', type: 'Support', description: 'Passes de secours depuis la position de libero.', level: 82 },
+          { name: 'Receives', type: 'Defense', description: 'Réceptions de niveau national.', level: 96 }
+        ],
+        relationships: [
+          { name: 'Tanaka Ryunosuke', type: 'Meilleur Ami', description: 'Duo énergique inséparable.' },
+          { name: 'Asahi Azumane', type: 'Partenaire', description: 'Son ace qu\'il a convaincu de revenir.' },
+          { name: 'Kiyoko Shimizu', type: 'Amour', description: 'Admiration profonde pour la manager.' }
+        ],
+        quotes: ['"Rolling Thunder!"', '"Je vous couvre tous!"', '"Le libero est le dernier rempart!"'],
+        achievements: ['Meilleur libero de la préfecture', 'Réceptions légendaires contre Shiratorizawa', 'Inspiration pour Hinata'],
+        weaknesses: ['Petite taille', 'Impulsivité', 'Ne peut pas attaquer']
+      },
+      {
+        id: 'tanaka',
+        name: 'TANAKA RYUNOSUKE',
+        nativeName: '田中龍之介',
+        title: 'The Spirit',
+        role: 'Wing Spiker',
+        rank: 'ACE POTENTIAL',
+        image: tanakaImg,
+        description: 'Tanaka est le cœur battant de Karasuno, un attaquant fiable avec un mental d\'acier.',
+        fullBio: 'Wing spiker dévoué, Tanaka est connu pour son énergie débordante et sa capacité à marquer dans les moments critiques. Son mental inébranlable en fait un pilier de l\'équipe.',
+        personality: ['Énergique', 'Loyal', 'Protecteur', 'Bruyant', 'Courageux', 'Fiable'],
+        stats: { power: 82, speed: 78, technique: 75, intelligence: 70, stamina: 85, agility: 76 },
+        status: { age: '17', birthday: '3 Mars', height: '177.2 cm', weight: '68.8 kg', bloodType: 'B', status: 'Alive', occupation: 'Étudiant / Wing Spiker', origin: 'Préfecture de Miyagi, Japon' },
+        affiliation: { team: 'Karasuno High School', role: 'Wing Spiker', allies: ['Nishinoya Yuu', 'Hinata Shouyou', 'Kageyama Tobio'] },
+        skills: [
+          { name: 'Cross Spike', type: 'Attack', description: 'Attaque croisée puissante.', level: 82 },
+          { name: 'Mental Fortitude', type: 'Passive', description: 'Résistance mentale exceptionnelle sous pression.', level: 90 },
+          { name: 'Straight Spike', type: 'Attack', description: 'Attaque en ligne droite.', level: 80 }
+        ],
+        relationships: [
+          { name: 'Nishinoya Yuu', type: 'Meilleur Ami', description: 'Partenaire d\'énergie.' },
+          { name: 'Saeko Tanaka', type: 'Sœur', description: 'Supportrice bruyante.' },
+          { name: 'Kiyoko Shimizu', type: 'Amour', description: 'Admiration partagée.' }
+        ],
+        quotes: ['"Bring it on!"', '"Je suis là pour vous!"', '"Karasuno ne tombe jamais!"'],
+        achievements: ['Point décisif contre Aoba Johsai', 'Capitaine potentiel', 'Mariage avec Kiyoko'],
+        weaknesses: ['Émotivité', 'Technique perfectible', 'Intimidation facile à contrer']
+      },
+      {
+        id: 'oikawa',
+        name: 'OIKAWA TOORU',
+        nativeName: '及川徹',
+        title: 'The Great King',
+        role: 'Setter',
+        rank: 'GENIUS',
+        image: oikawaImg,
+        description: 'Oikawa est le capitaine d\'Aoba Johsai, un passeur de génie qui tire le maximum de chaque coéquipier.',
+        fullBio: 'Surnommé le "Grand Roi", Oikawa est considéré comme l\'un des meilleurs passeurs du pays. Sa capacité à analyser ses adversaires et à maximiser le potentiel de son équipe est légendaire.',
+        backstory: 'Rival de Kageyama depuis le collège, Oikawa a développé un complexe d\'infériorité face au talent naturel de son kouhai. Il a compensé par un travail acharné et une intelligence tactique supérieure.',
+        personality: ['Charismatique', 'Travailleur', 'Obsessionnel', 'Charmeur', 'Compétitif', 'Manipulateur'],
+        stats: { power: 75, speed: 82, technique: 96, intelligence: 95, stamina: 80, agility: 82 },
+        status: { age: '18', birthday: '20 Juillet', height: '184.3 cm', weight: '72.2 kg', bloodType: 'B', status: 'Alive', occupation: 'Joueur Professionnel', origin: 'Préfecture de Miyagi, Japon' },
+        affiliation: { team: 'Aoba Johsai (Ancien)', role: 'Capitaine / Passeur', allies: ['Iwaizumi Hajime', 'Hanamaki Takahiro'], previousAffiliations: ['Kitagawa Daiichi'] },
+        skills: [
+          { name: 'Killer Serve', type: 'Attack', description: 'Service dévastateur visant les zones faibles.', level: 95 },
+          { name: 'Perfect Set', type: 'Support', description: 'Passes adaptées à chaque attaquant.', level: 96 },
+          { name: 'Game Reading', type: 'Passive', description: 'Analyse en temps réel des stratégies adverses.', level: 94 }
+        ],
+        relationships: [
+          { name: 'Iwaizumi Hajime', type: 'Meilleur Ami', description: 'Partenaire de toujours.' },
+          { name: 'Kageyama Tobio', type: 'Rival', description: 'Complexe d\'infériorité envers son génie.' },
+          { name: 'Ushijima Wakatoshi', type: 'Rival', description: 'Le joueur qu\'il n\'a jamais pu battre au lycée.' }
+        ],
+        quotes: ['"Si tu vas te comparer aux autres, compare-toi à quelqu\'un de mieux que toi."', '"Le talent est quelque chose que tu fais fleurir."', '"Je ne peux pas le supporter, ce génie naturel."'],
+        achievements: ['Meilleur passeur du tournoi Inter-High', 'Joueur professionnel en Argentine', 'Capitaine légendaire'],
+        weaknesses: ['Obsession envers les génies', 'Blessure au genou', 'Pression auto-imposée']
       }
     ]
   },
@@ -293,6 +438,59 @@ export const animeData: Anime[] = [
           { name: 'Épée de Lumière', type: 'Arme', description: 'Épée bénie par un artefact ancien.', rarity: 'Legendary' }
         ],
         achievements: ['Rang S le plus jeune de Corée', 'Vice-Maître de la guilde n°1', '100+ donjons de rang A nettoyés']
+      },
+      {
+        id: 'beru',
+        name: 'BERU',
+        nativeName: '베루',
+        title: 'Ant King Shadow',
+        role: 'Shadow Soldier',
+        rank: 'MARSHAL GRADE',
+        image: beruImg,
+        description: 'Beru est l\'ombre la plus puissante de Sung Jin-Woo, anciennement le Roi des Fourmis.',
+        fullBio: 'Autrefois le redoutable Roi des Fourmis, Beru a été extrait par Jin-Woo après un combat épique. Il est devenu son soldat le plus dévoué, possédant une force colossale et une loyauté absolue.',
+        personality: ['Dévoué', 'Puissant', 'Respectueux', 'Protecteur', 'Féroce au combat'],
+        stats: { power: 95, speed: 92, technique: 88, intelligence: 80, stamina: 95, agility: 90 },
+        status: { age: 'Inconnu', birthday: 'Inconnu', height: '200+ cm', weight: 'Inconnu', bloodType: 'Aucun', status: 'Alive', occupation: 'Shadow Soldier', origin: 'Île de Jeju' },
+        affiliation: { team: 'Shadow Army', role: 'Marshal', allies: ['Sung Jin-Woo', 'Igris', 'Tank'] },
+        skills: [
+          { name: 'Regeneration', type: 'Passive', description: 'Régénération rapide en tant qu\'ombre.', level: 95 },
+          { name: 'Ant King\'s Claws', type: 'Attack', description: 'Griffes dévastatrices capables de trancher l\'acier.', level: 92 },
+          { name: 'Flight', type: 'Support', description: 'Capacité de vol grâce à ses ailes.', level: 88 }
+        ],
+        relationships: [
+          { name: 'Sung Jin-Woo', type: 'Maître', description: 'Loyauté absolue envers son roi.' },
+          { name: 'Igris', type: 'Camarade', description: 'Respect mutuel entre soldats d\'élite.' }
+        ],
+        quotes: ['"Mon Roi!"', '"Je protégerai mon maître!"', '"Personne ne touchera à Sa Majesté!"'],
+        achievements: ['Ancien Roi des Fourmis', 'Marshal de l\'Armée des Ombres', 'Défenseur principal de Jin-Woo'],
+        weaknesses: ['Dépendance à son maître', 'Contrôle émotionnel', 'Taille imposante peu discrète']
+      },
+      {
+        id: 'jinho',
+        name: 'YOO JIN-HO',
+        nativeName: '유진호',
+        title: 'Vice Guild Master',
+        role: 'D-Rank Hunter',
+        rank: 'VICE MASTER',
+        image: jinhoImg,
+        description: 'Jin-Ho est le vice-maître loyal de la guilde Ahjin et le meilleur ami de Sung Jin-Woo.',
+        fullBio: 'Fils d\'un riche homme d\'affaires, Jin-Ho a rencontré Jin-Woo lors d\'un raid et est devenu son allié le plus fidèle. Malgré son rang faible, sa loyauté et son dévouement sont inégalés.',
+        personality: ['Loyal', 'Honnête', 'Enthousiaste', 'Courageux', 'Dévoué', 'Humble'],
+        stats: { power: 30, speed: 40, technique: 45, intelligence: 75, stamina: 50, agility: 45 },
+        status: { age: '22', birthday: 'Inconnu', height: '175 cm', weight: '65 kg', bloodType: 'A', status: 'Alive', occupation: 'Vice-Guild Master', origin: 'Corée du Sud' },
+        affiliation: { team: 'Ahjin Guild', role: 'Vice-Guild Master', allies: ['Sung Jin-Woo', 'Yoo Myung-Han'] },
+        skills: [
+          { name: 'Business Acumen', type: 'Passive', description: 'Gestion efficace des affaires de la guilde.', level: 85 },
+          { name: 'Loyalty', type: 'Passive', description: 'Dévouement absolu envers Jin-Woo.', level: 100 }
+        ],
+        relationships: [
+          { name: 'Sung Jin-Woo', type: 'Hyung-nim', description: 'Le considère comme un grand frère.' },
+          { name: 'Yoo Myung-Han', type: 'Père', description: 'Relation complexe avec son père millionnaire.' }
+        ],
+        quotes: ['"Hyung-nim!"', '"Je suivrai Jin-Woo hyung partout!"', '"La guilde Ahjin est la meilleure!"'],
+        achievements: ['Co-fondateur de la guilde Ahjin', 'Survie à de nombreux raids dangereux', 'Gestion parfaite de la guilde'],
+        weaknesses: ['Rang de chasseur faible', 'Trop dévoué', 'Manque de puissance de combat']
       }
     ]
   },
