@@ -10,15 +10,21 @@ import {
   Info, 
   Shield,
   UserCircle,
-  Quote
+  Quote,
+  Package,
+  Trophy,
+  AlertTriangle,
+  BookOpen,
+  Sparkles
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import ParticleBackground from '@/components/ParticleBackground';
 import StatBar from '@/components/StatBar';
 import SkillCard from '@/components/SkillCard';
+import FavoriteButton from '@/components/FavoriteButton';
 import { getCharacterById, getAnimeById } from '@/data/animeData';
 
-type Section = 'about' | 'affiliation' | 'status' | 'relationships' | 'skills';
+type Section = 'about' | 'affiliation' | 'status' | 'relationships' | 'skills' | 'equipment' | 'achievements';
 
 const CharacterProfile = () => {
   const { animeId, characterId } = useParams<{ animeId: string; characterId: string }>();
@@ -47,14 +53,22 @@ const CharacterProfile = () => {
     'theme-naruto': 'hsl(25, 100%, 50%)',
     'theme-demon-slayer': 'hsl(355, 90%, 55%)',
     'theme-jujutsu': 'hsl(280, 100%, 60%)',
+    'theme-mha': 'hsl(140, 70%, 45%)',
+    'theme-onepiece': 'hsl(45, 100%, 50%)',
+    'theme-aot': 'hsl(0, 0%, 45%)',
+    'theme-dragonball': 'hsl(35, 100%, 55%)',
+    'theme-deathnote': 'hsl(0, 0%, 20%)',
+    'theme-bleach': 'hsl(200, 100%, 50%)',
   };
 
   const sections: { id: Section; label: string; icon: React.ReactNode }[] = [
-    { id: 'about', label: 'ABOUT', icon: <Info className="w-4 h-4" /> },
+    { id: 'about', label: 'BIOGRAPHIE', icon: <BookOpen className="w-4 h-4" /> },
     { id: 'affiliation', label: 'AFFILIATION', icon: <Users className="w-4 h-4" /> },
     { id: 'status', label: 'STATUS', icon: <UserCircle className="w-4 h-4" /> },
-    { id: 'relationships', label: 'RELATIONSHIPS', icon: <Heart className="w-4 h-4" /> },
-    { id: 'skills', label: 'SKILLS', icon: <Swords className="w-4 h-4" /> },
+    { id: 'relationships', label: 'RELATIONS', icon: <Heart className="w-4 h-4" /> },
+    { id: 'skills', label: 'COMPÉTENCES', icon: <Swords className="w-4 h-4" /> },
+    { id: 'equipment', label: 'ÉQUIPEMENT', icon: <Package className="w-4 h-4" /> },
+    { id: 'achievements', label: 'EXPLOITS', icon: <Trophy className="w-4 h-4" /> },
   ];
 
   const stats = [
@@ -108,6 +122,14 @@ const CharacterProfile = () => {
                       alt={character.name}
                       className="w-full h-full object-cover"
                     />
+                    {/* Favorite Button */}
+                    <div className="absolute top-4 right-4 z-10">
+                      <FavoriteButton 
+                        animeId={animeId!}
+                        characterId={characterId!}
+                        className="bg-background/80 backdrop-blur-sm"
+                      />
+                    </div>
                   </div>
                   
                   {/* Rank Badge */}
@@ -116,7 +138,7 @@ const CharacterProfile = () => {
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.3 }}
-                      className="absolute -top-3 -right-3 flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground font-bold text-sm shadow-lg shadow-primary/30"
+                      className="absolute -top-3 -left-3 flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground font-bold text-sm shadow-lg shadow-primary/30"
                     >
                       <Star className="w-4 h-4" />
                       {character.rank}
@@ -190,14 +212,73 @@ const CharacterProfile = () => {
                   className="glass-card rounded-2xl p-6 lg:p-8"
                 >
                   {activeSection === 'about' && (
-                    <div className="space-y-6">
-                      <h3 className="font-display text-xl font-bold gradient-text">Biographie</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {character.fullBio}
-                      </p>
+                    <div className="space-y-8">
+                      <div>
+                        <h3 className="font-display text-xl font-bold gradient-text mb-4">Biographie</h3>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {character.fullBio}
+                        </p>
+                      </div>
+
+                      {character.backstory && (
+                        <div>
+                          <h4 className="font-display text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+                            <BookOpen className="w-5 h-5 text-primary" />
+                            Histoire
+                          </h4>
+                          <p className="text-muted-foreground leading-relaxed pl-4 border-l-2 border-primary/30">
+                            {character.backstory}
+                          </p>
+                        </div>
+                      )}
+
+                      {character.personality && character.personality.length > 0 && (
+                        <div>
+                          <h4 className="font-display text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+                            <Sparkles className="w-5 h-5 text-primary" />
+                            Traits de Personnalité
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {character.personality.map((trait, index) => (
+                              <motion.span
+                                key={trait}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: index * 0.05 }}
+                                className="px-3 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-medium"
+                              >
+                                {trait}
+                              </motion.span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {character.weaknesses && character.weaknesses.length > 0 && (
+                        <div>
+                          <h4 className="font-display text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+                            <AlertTriangle className="w-5 h-5 text-destructive" />
+                            Faiblesses
+                          </h4>
+                          <div className="grid gap-2">
+                            {character.weaknesses.map((weakness, index) => (
+                              <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className="flex items-start gap-2 text-muted-foreground"
+                              >
+                                <span className="text-destructive mt-1">•</span>
+                                {weakness}
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                       
                       {character.quotes.length > 0 && (
-                        <div className="mt-8">
+                        <div>
                           <h4 className="font-display text-lg font-bold text-foreground mb-4 flex items-center gap-2">
                             <Quote className="w-5 h-5 text-primary" />
                             Citations Mémorables
@@ -305,6 +386,78 @@ const CharacterProfile = () => {
                           <SkillCard key={skill.name} skill={skill} index={index} />
                         ))}
                       </div>
+                    </div>
+                  )}
+
+                  {activeSection === 'equipment' && (
+                    <div className="space-y-6">
+                      <h3 className="font-display text-xl font-bold gradient-text">Équipement & Arsenal</h3>
+                      {character.equipment && character.equipment.length > 0 ? (
+                        <div className="grid gap-4">
+                          {character.equipment.map((item, index) => {
+                            const rarityColors: Record<string, string> = {
+                              'Common': 'bg-gray-500/20 text-gray-400 border-gray-500/30',
+                              'Rare': 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+                              'Epic': 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+                              'Legendary': 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
+                              'Mythic': 'bg-red-500/20 text-red-400 border-red-500/30',
+                            };
+                            return (
+                              <motion.div
+                                key={item.name}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.1 }}
+                                className="glass p-4 rounded-xl border border-border/50"
+                              >
+                                <div className="flex items-start justify-between mb-2">
+                                  <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                                      <Package className="w-5 h-5 text-primary" />
+                                    </div>
+                                    <div>
+                                      <h4 className="font-semibold text-foreground">{item.name}</h4>
+                                      <p className="text-xs text-muted-foreground">{item.type}</p>
+                                    </div>
+                                  </div>
+                                  <span className={`px-2 py-1 rounded-full text-xs font-medium border ${rarityColors[item.rarity]}`}>
+                                    {item.rarity}
+                                  </span>
+                                </div>
+                                <p className="text-sm text-muted-foreground pl-13">{item.description}</p>
+                              </motion.div>
+                            );
+                          })}
+                        </div>
+                      ) : (
+                        <p className="text-muted-foreground">Aucun équipement documenté pour ce personnage.</p>
+                      )}
+                    </div>
+                  )}
+
+                  {activeSection === 'achievements' && (
+                    <div className="space-y-6">
+                      <h3 className="font-display text-xl font-bold gradient-text">Exploits & Accomplissements</h3>
+                      {character.achievements && character.achievements.length > 0 ? (
+                        <div className="grid gap-3">
+                          {character.achievements.map((achievement, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: index * 0.1 }}
+                              className="flex items-center gap-3 glass p-3 rounded-xl"
+                            >
+                              <div className="w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center shrink-0">
+                                <Trophy className="w-4 h-4 text-yellow-500" />
+                              </div>
+                              <p className="text-foreground">{achievement}</p>
+                            </motion.div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-muted-foreground">Aucun exploit documenté pour ce personnage.</p>
+                      )}
                     </div>
                   )}
                 </motion.div>

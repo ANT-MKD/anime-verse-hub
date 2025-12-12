@@ -9,6 +9,7 @@ import AnimeCharacters from "./pages/AnimeCharacters";
 import CharacterProfile from "./pages/CharacterProfile";
 import AnimesPage from "./pages/AnimesPage";
 import CharactersPage from "./pages/CharactersPage";
+import FavoritesPage from "./pages/FavoritesPage";
 import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
 import AIChatbot from "./components/AIChatbot";
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/animes" element={<AnimesPage />} />
             <Route path="/characters" element={<CharactersPage />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/anime/:animeId" element={<AnimeCharacters />} />
             <Route path="/anime/:animeId/character/:characterId" element={<CharacterProfile />} />
