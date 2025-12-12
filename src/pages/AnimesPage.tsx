@@ -1,11 +1,25 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import ParticleBackground from '@/components/ParticleBackground';
 import AnimeCard from '@/components/AnimeCard';
+import Pagination from '@/components/Pagination';
 import { animeData } from '@/data/animeData';
-import { Filter, Grid, List } from 'lucide-react';
+
+const ITEMS_PER_PAGE = 8;
 
 const AnimesPage = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  
+  const totalPages = Math.ceil(animeData.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedAnimes = animeData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <ParticleBackground particleCount={30} />
@@ -22,15 +36,21 @@ const AnimesPage = () => {
               <span className="gradient-text">TOUS LES ANIMES</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl">
-              Explorez notre collection d'animes et découvrez les profils détaillés de chaque personnage.
+              Explorez notre collection de {animeData.length} animes et découvrez les profils détaillés de chaque personnage.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-            {animeData.map((anime, index) => (
+            {paginatedAnimes.map((anime, index) => (
               <AnimeCard key={anime.id} anime={anime} index={index} />
             ))}
           </div>
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </div>
       </main>
     </div>
