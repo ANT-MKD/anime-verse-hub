@@ -201,7 +201,11 @@ export const animeData: Anime[] = [
           { name: 'Nishinoya Yuu', type: 'Mentor', description: 'Nishinoya l\'a aidé à améliorer ses réceptions.' },
           { name: 'Kozume Kenma', type: 'Ami / Rival', description: 'Une amitié unique née de leur passion commune.' }
         ],
-        quotes: ['"Je suis là!" - La célèbre phrase avant chaque attaque', '"Aussi longtemps que je serai là, tu es invincible!"', '"Le terrain de l\'autre côté du filet, je vais le conquérir!"'],
+        quotes: [
+          '"俺がいる!" (Ore ga iru! - Je suis là!)',
+          '"お前がいる限り、お前は最強だ!" (Omae ga iru kagiri, omae wa saikyou da! - Aussi longtemps que je serai là, tu es invincible!)',
+          '"ネットの向こう側、俺が征服してやる!" (Netto no mukougawa, ore ga seifuku shite yaru! - Le terrain de l\'autre côté du filet, je vais le conquérir!)'
+        ],
         equipment: [
           { name: 'Chaussures de Volleyball Asics', type: 'Équipement', description: 'Chaussures légères optimisées pour les sauts.', rarity: 'Rare' },
           { name: 'Genouillères Karasuno', type: 'Protection', description: 'Protection standard de l\'équipe.', rarity: 'Common' }
@@ -235,7 +239,11 @@ export const animeData: Anime[] = [
           { name: 'Oikawa Tooru', type: 'Rival', description: 'Son senpai et rival principal.' },
           { name: 'Sugawara Koushi', type: 'Mentor', description: 'L\'a aidé à devenir un meilleur coéquipier.' }
         ],
-        quotes: ['"Aussi longtemps que je suis là, tu es invincible."', '"Les passes existent pour les attaquants."', '"Je suis un passeur. Mon travail est de connecter."'],
+        quotes: [
+          '"俺がいる限り、お前は最強だ。" (Ore ga iru kagiri, omae wa saikyou da - Aussi longtemps que je suis là, tu es invincible.)',
+          '"トスは、アタッカーのためにある。" (Tosu wa, atakkā no tame ni aru - Les passes existent pour les attaquants.)',
+          '"俺はセッターだ。繋ぐのが仕事だ。" (Ore wa settā da. Tsunagu no ga shigoto da - Je suis un passeur. Mon travail est de connecter.)'
+        ],
         achievements: ['Sélectionné pour le camp national des jeunes', 'Meilleur passeur du tournoi Spring', 'Joueur professionnel en Italie'],
         weaknesses: ['Communication interpersonnelle', 'Gestion de la frustration', 'Tendance à surcharger les coéquipiers']
       },
@@ -264,7 +272,11 @@ export const animeData: Anime[] = [
           { name: 'Hinata Shouyou', type: 'Coéquipier', description: 'Relation conflictuelle mais respectueuse.' },
           { name: 'Akiteru Tsukishima', type: 'Frère', description: 'Relation compliquée en reconstruction.' }
         ],
-        quotes: ['"Qu\'est-ce qui est amusant dans un club?"', '"C\'est juste un club."', '"Un moment de gloire?"'],
+        quotes: [
+          '"部活の何が楽しいの?" (Bukatsu no nani ga tanoshii no? - Qu\'est-ce qui est amusant dans un club?)',
+          '"たかが部活だろ。" (Takaga bukatsu daro - C\'est juste un club.)',
+          '"一瞬の栄光?" (Isshun no eikou? - Un moment de gloire?)'
+        ],
         achievements: ['MVP du match contre Shiratorizawa', 'Blocage décisif contre Ushijima', 'Évolution mentale remarquable'],
         weaknesses: ['Manque de passion initiale', 'Provocations excessives', 'Endurance limitée']
       },
@@ -293,7 +305,11 @@ export const animeData: Anime[] = [
           { name: 'Asahi Azumane', type: 'Partenaire', description: 'Son ace qu\'il a convaincu de revenir.' },
           { name: 'Kiyoko Shimizu', type: 'Amour', description: 'Admiration profonde pour la manager.' }
         ],
-        quotes: ['"Rolling Thunder!"', '"Je vous couvre tous!"', '"Le libero est le dernier rempart!"'],
+        quotes: [
+          '"ローリングサンダー!" (Rōringu Sandā! - Rolling Thunder!)',
+          '"俺がみんなを守る!" (Ore ga minna wo mamoru! - Je vous couvre tous!)',
+          '"リベロは最後の砦だ!" (Riberō wa saigo no toride da! - Le libero est le dernier rempart!)'
+        ],
         achievements: ['Meilleur libero de la préfecture', 'Réceptions légendaires contre Shiratorizawa', 'Inspiration pour Hinata'],
         weaknesses: ['Petite taille', 'Impulsivité', 'Ne peut pas attaquer']
       },
@@ -400,7 +416,11 @@ export const animeData: Anime[] = [
           { name: 'Yoo Jin-Ho', type: 'Vice-Maître / Ami', description: 'Son loyal compagnon et vice-maître de guilde.' },
           { name: 'Beru', type: 'Shadow Soldier', description: 'Son ombre la plus puissante et dévouée.' }
         ],
-        quotes: ['"Arise." - Invocation des ombres', '"Je seul peux monter de niveau."', '"La force est tout ce qui compte."'],
+        quotes: [
+          '"일어나라." (Ireonara - Arise.)',
+          '"나만 레벨업 한다." (Naman lebeleob handa - Je suis le seul à monter de niveau.)',
+          '"힘이 전부다." (Himi jeonbuda - La force est tout ce qui compte.)'
+        ],
         equipment: [
           { name: 'Épée du Démon', type: 'Arme', description: 'Épée légendaire obtenue dans un donjon de rang S.', rarity: 'Legendary' },
           { name: 'Armure du Shadow Monarch', type: 'Armure', description: 'Armure manifestée par le pouvoir des ombres.', rarity: 'Mythic' }
@@ -538,7 +558,11 @@ export const animeData: Anime[] = [
           { name: 'Megumi Fushiguro', type: 'Étudiant Préféré', description: 'Reconnaît son potentiel immense.' },
           { name: 'Geto Suguru', type: 'Ancien Meilleur Ami', description: 'Leur amitié brisée le hante encore.' }
         ],
-        quotes: ['"Je suis le plus fort."', '"Ne t\'inquiète pas. Je suis le plus fort, après tout."', '"Tu es faible."'],
+        quotes: [
+          '"僕は最強だから。" (Boku wa saikyou dakara - Je suis le plus fort.)',
+          '"大丈夫。僕、最強だから。" (Daijoubu. Boku, saikyou dakara - Ne t\'inquiète pas. Je suis le plus fort, après tout.)',
+          '"弱い。" (Yowai - Tu es faible.)'
+        ],
         achievements: ['Seul détenteur des Six Eyes et Limitless', 'Défaite de Toji Fushiguro', 'Mentor de la nouvelle génération'],
         weaknesses: ['Arrogance', 'Impossible à sceller normalement', 'Attachement émotionnel aux étudiants']
       },
@@ -599,9 +623,108 @@ export const animeData: Anime[] = [
           { name: 'Gojo Satoru', type: 'Mentor', description: 'L\'a sauvé du clan Zenin.' },
           { name: 'Tsumiki Fushiguro', type: 'Demi-Sœur', description: 'Sa principale motivation pour vivre.' }
         ],
-        quotes: ['"Je vais sauver les gens de manière égoïste."', '"Je ne me pardonne pas de sauver les mauvaises personnes."'],
+        quotes: [
+          '"俺は自分勝手に人を救う。" (Ore wa jibunkatte ni hito wo sukuu - Je vais sauver les gens de manière égoïste.)',
+          '"正しくない人を助けたら許さない。" (Tadashikunai hito wo tasuketara yurusanai - Je ne me pardonne pas de sauver les mauvaises personnes.)'
+        ],
         achievements: ['Maîtrise de la technique des Dix Ombres', 'Survie à Shibuya', 'Invocation de Mahoraga (partielle)'],
         weaknesses: ['Réserve de mana limitée', 'Émotionnellement distant', 'Tendance à se sacrifier']
+      },
+      {
+        id: 'nobara',
+        name: 'KUGISAKI NOBARA',
+        nativeName: '釘崎野薔薇',
+        title: 'The Hammer Witch',
+        role: 'Grade 3 Sorcerer',
+        rank: 'GRADE 3',
+        image: nobaraImg,
+        description: 'Nobara Kugisaki est une exorciste déterminée utilisant des clous et un marteau comme armes.',
+        fullBio: 'Venue de la campagne à Tokyo pour devenir exorciste, Nobara combine confiance en soi et technique unique. Sa technique de Paille lui permet d\'infliger des dégâts à distance.',
+        personality: ['Confiante', 'Directe', 'Fashionista', 'Loyale', 'Courageuse', 'Fière'],
+        stats: { power: 75, speed: 78, technique: 85, intelligence: 80, stamina: 72, agility: 76 },
+        status: { age: '16', birthday: '7 Août', height: '160 cm', weight: 'Inconnu', bloodType: 'O', status: 'Unknown', occupation: 'Étudiante Première Année', origin: 'Campagne japonaise' },
+        affiliation: { team: 'Tokyo Jujutsu High', role: 'Étudiante Première Année', allies: ['Yuji Itadori', 'Megumi Fushiguro', 'Maki Zenin'] },
+        skills: [
+          { name: 'Straw Doll Technique', type: 'Attack', description: 'Technique utilisant des poupées de paille pour des attaques à distance.', level: 85 },
+          { name: 'Hairpin', type: 'Attack', description: 'Fait exploser les clous dans l\'ennemi.', level: 80 },
+          { name: 'Resonance', type: 'Attack', description: 'Connecte une cible à une poupée pour infliger des dégâts.', level: 82 }
+        ],
+        relationships: [
+          { name: 'Yuji Itadori', type: 'Ami proche', description: 'Partenaire de combat de confiance.' },
+          { name: 'Megumi Fushiguro', type: 'Ami', description: 'Respect mutuel.' },
+          { name: 'Maki Zenin', type: 'Modèle', description: 'Admire sa force.' }
+        ],
+        quotes: [
+          '"私を誰だと思ってるの!" (Watashi wo dare da to omotteru no! - Tu me prends pour qui!)',
+          '"田舎に帰れ!" (Inaka ni kaere! - Retourne à la campagne!)',
+          '"可愛くなきゃ意味ない!" (Kawaikunakya imi nai! - Si ce n\'est pas mignon, ça n\'a pas de sens!)'
+        ],
+        achievements: ['Défaite de malédictions de haut niveau', 'Survie à Shibuya', 'Maîtrise de la Résonance'],
+        weaknesses: ['Impulsive', 'Portée limitée', 'Consommation d\'énergie élevée']
+      },
+      {
+        id: 'sukuna',
+        name: 'RYOMEN SUKUNA',
+        nativeName: '両面宿儺',
+        title: 'King of Curses',
+        role: 'Special Grade Curse',
+        rank: 'SPECIAL GRADE',
+        image: sukunaImg,
+        description: 'Sukuna est le Roi des Malédictions, l\'être maudit le plus puissant ayant jamais existé.',
+        fullBio: 'Il y a mille ans, Sukuna était un sorcier humain d\'une puissance inégalée. Après sa mort, son pouvoir était si grand qu\'il ne pouvait être détruit. Ses 20 doigts, contenant son essence, ont survécu aux siècles.',
+        personality: ['Sadique', 'Arrogant', 'Intelligent', 'Cruel', 'Raffiné', 'Impitoyable'],
+        stats: { power: 100, speed: 98, technique: 100, intelligence: 95, stamina: 100, agility: 96 },
+        status: { age: '1000+', birthday: 'Inconnu', height: 'Variable', weight: 'Variable', bloodType: 'Inconnu', status: 'Alive', occupation: 'Roi des Malédictions', origin: 'Ère Heian, Japon' },
+        affiliation: { team: 'Aucune', role: 'Roi des Malédictions', allies: ['Aucun'] },
+        skills: [
+          { name: 'Cleave', type: 'Attack', description: 'Tranche s\'adaptant à la résistance de la cible.', level: 100 },
+          { name: 'Dismantle', type: 'Attack', description: 'Coupe par défaut pour les objets inanimés.', level: 100 },
+          { name: 'Malevolent Shrine', type: 'Ultimate', description: 'Domaine attaquant tout dans un rayon de 200m.', level: 100 },
+          { name: 'Reverse Cursed Technique', type: 'Support', description: 'Régénération instantanée des blessures.', level: 98 }
+        ],
+        relationships: [
+          { name: 'Yuji Itadori', type: 'Hôte', description: 'Le considère comme un divertissement.' },
+          { name: 'Megumi Fushiguro', type: 'Intérêt', description: 'Fasciné par sa technique.' }
+        ],
+        quotes: [
+          '"お前は退屈だ。" (Omae wa taikutsu da - Tu es ennuyeux.)',
+          '"俺様を楽しませろ。" (Ore-sama wo tanoshimasero - Amuse-moi.)',
+          '"これが呪いの王だ。" (Kore ga noroi no ou da - C\'est ça, le Roi des Malédictions.)'
+        ],
+        achievements: ['Roi des Malédictions incontesté', 'Survie pendant 1000 ans', 'Domaine parfait'],
+        weaknesses: ['Emprisonné dans le corps de Yuji', 'Arrogance extrême', 'Incapacité à utiliser sa pleine puissance']
+      },
+      {
+        id: 'nanami',
+        name: 'NANAMI KENTO',
+        nativeName: '七海建人',
+        title: 'The Overtime Hater',
+        role: 'Grade 1 Sorcerer',
+        rank: 'GRADE 1',
+        image: nanamiImg,
+        description: 'Nanami est un sorcier de grade 1 et ancien salaryman qui déteste les heures supplémentaires.',
+        fullBio: 'Après avoir quitté le monde de l\'exorcisme pour devenir salaryman, Nanami est revenu réalisant que les deux mondes étaient aussi absurdes. Son approche méthodique et sa technique Ratio font de lui un combattant redoutable.',
+        personality: ['Pragmatique', 'Sérieux', 'Protecteur', 'Cynique', 'Professionnel', 'Mentor'],
+        stats: { power: 85, speed: 82, technique: 92, intelligence: 90, stamina: 78, agility: 80 },
+        status: { age: '28', birthday: '3 Juillet', height: '184 cm', weight: 'Inconnu', bloodType: 'B', status: 'Deceased', occupation: 'Sorcier Grade 1', origin: 'Japon' },
+        affiliation: { team: 'Tokyo Jujutsu High', role: 'Sorcier Grade 1', allies: ['Gojo Satoru', 'Yuji Itadori', 'Haibara Yu'] },
+        skills: [
+          { name: 'Ratio Technique', type: 'Attack', description: 'Crée un point faible obligatoire sur la cible.', level: 90 },
+          { name: 'Overtime', type: 'Passive', description: 'Augmente la puissance après les heures de travail.', level: 85 },
+          { name: 'Binding Vow', type: 'Support', description: 'Contrat augmentant temporairement la puissance.', level: 82 }
+        ],
+        relationships: [
+          { name: 'Yuji Itadori', type: 'Protégé', description: 'Le guide comme un mentor.' },
+          { name: 'Gojo Satoru', type: 'Collègue', description: 'Respect mutuel malgré leurs différences.' },
+          { name: 'Haibara Yu', type: 'Ancien Partenaire (Décédé)', description: 'Sa mort l\'a poussé à quitter.' }
+        ],
+        quotes: [
+          '"残業は嫌いだ。" (Zangyou wa kirai da - Je déteste les heures supplémentaires.)',
+          '"子供に大人の責任を負わせるな。" (Kodomo ni otona no sekinin wo owaseru na - Ne mettez pas les responsabilités d\'adultes sur les épaules des enfants.)',
+          '"仕事だから。" (Shigoto dakara - C\'est le travail.)'
+        ],
+        achievements: ['Mentor de Yuji', 'Défaite de Mahito (temporaire)', 'Maîtrise du Ratio Technique'],
+        weaknesses: ['Manque de technique défensive', 'Cynisme', 'Pas de technique de domaine']
       }
     ]
   },
@@ -745,6 +868,75 @@ export const animeData: Anime[] = [
         ],
         achievements: ['Création de sa propre Respiration', 'Défaite de démons puissants', 'Développement de liens humains'],
         weaknesses: ['Socialement inadapté', 'Impulsif', 'Difficulté à comprendre les émotions']
+      },
+      {
+        id: 'rengoku',
+        name: 'RENGOKU KYOJURO',
+        nativeName: '煉獄杏寿郎',
+        title: 'Flame Hashira',
+        role: 'Hashira',
+        rank: 'HASHIRA',
+        image: rengokuImg,
+        description: 'Rengoku est le Pilier de la Flamme, un des plus puissants pourfendeurs du Corps.',
+        fullBio: 'Héritier d\'une lignée de Piliers de la Flamme, Kyojuro Rengoku incarne l\'esprit du Demon Slayer Corps. Son cœur ardent et sa détermination sans faille en font un mentor inspirant.',
+        personality: ['Enthousiaste', 'Honorable', 'Protecteur', 'Passionné', 'Juste', 'Inspirant'],
+        stats: { power: 95, speed: 92, technique: 98, intelligence: 88, stamina: 90, agility: 90 },
+        status: { age: '20', birthday: '10 Mai', height: '177 cm', weight: '72 kg', bloodType: 'Inconnu', status: 'Deceased', occupation: 'Hashira', origin: 'Japon' },
+        affiliation: { team: 'Demon Slayer Corps', role: 'Pilier de la Flamme', allies: ['Tanjiro Kamado', 'Mitsuri Kanroji', 'Senjuro Rengoku'] },
+        skills: [
+          { name: 'Flame Breathing: All Forms', type: 'Attack', description: 'Maîtrise totale des 9 formes de la Respiration de la Flamme.', level: 98 },
+          { name: 'Rengoku', type: 'Ultimate', description: 'Neuvième forme : attaque finale concentrant toute la puissance.', level: 95 },
+          { name: 'Flame Tiger', type: 'Attack', description: 'Attaque créant un tigre de flammes.', level: 90 }
+        ],
+        relationships: [
+          { name: 'Tanjiro Kamado', type: 'Protégé', description: 'L\'a inspiré profondément.' },
+          { name: 'Senjuro Rengoku', type: 'Frère', description: 'Son petit frère qu\'il encourage.' }
+        ],
+        quotes: [
+          '"心を燃やせ!" (Kokoro wo moyase! - Enflamme ton cœur!)',
+          '"俺は俺の責務を全うする!" (Ore wa ore no sekimu wo mattou suru! - J\'accomplirai mon devoir!)',
+          '"うまい!" (Umai! - Délicieux!)'
+        ],
+        equipment: [
+          { name: 'Épée Nichirin de Flamme', type: 'Arme', description: 'Épée rouge emblématique du Pilier de la Flamme.', rarity: 'Legendary' }
+        ],
+        achievements: ['Pilier de la Flamme', 'Protection du train Mugen', 'Inspiration de la nouvelle génération'],
+        weaknesses: ['Sacrifice de soi', 'Manque de régénération', 'Mortel face aux Lunes Supérieures']
+      },
+      {
+        id: 'giyu',
+        name: 'TOMIOKA GIYU',
+        nativeName: '冨岡義勇',
+        title: 'Water Hashira',
+        role: 'Hashira',
+        rank: 'HASHIRA',
+        image: giyuImg,
+        description: 'Giyu est le Pilier de l\'Eau, connu pour sa maîtrise parfaite de la Respiration de l\'Eau.',
+        fullBio: 'Silencieux et stoïque, Giyu Tomioka cache une profonde douleur due à la mort de sa sœur et de son ami. C\'est lui qui a épargné Tanjiro et Nezuko, lançant ainsi leur aventure.',
+        personality: ['Stoïque', 'Protecteur', 'Silencieux', 'Déterminé', 'Solitaire', 'Juste'],
+        stats: { power: 92, speed: 95, technique: 98, intelligence: 85, stamina: 88, agility: 94 },
+        status: { age: '21', birthday: '8 Février', height: '176 cm', weight: '69 kg', bloodType: 'Inconnu', status: 'Alive', occupation: 'Hashira', origin: 'Japon' },
+        affiliation: { team: 'Demon Slayer Corps', role: 'Pilier de l\'Eau', allies: ['Tanjiro Kamado', 'Shinobu Kocho', 'Sabito (Décédé)'] },
+        skills: [
+          { name: 'Water Breathing: All Forms', type: 'Attack', description: 'Maîtrise complète des 10 formes + forme créée.', level: 98 },
+          { name: 'Dead Calm', type: 'Defense', description: 'Onzième forme : état de calme absolu annulant les attaques.', level: 95 },
+          { name: 'Water Wheel', type: 'Attack', description: 'Attaque rotative puissante.', level: 92 }
+        ],
+        relationships: [
+          { name: 'Tanjiro Kamado', type: 'Protégé', description: 'L\'a sauvé et guidé.' },
+          { name: 'Shinobu Kocho', type: 'Collègue', description: 'Relation complexe mais respectueuse.' },
+          { name: 'Sabito', type: 'Ami (Décédé)', description: 'Son meilleur ami mort en le protégeant.' }
+        ],
+        quotes: [
+          '"俺は柱じゃない。" (Ore wa hashira janai - Je ne suis pas un Pilier.)',
+          '"生殺与奪の権を他人に握らせるな。" (Seisatsu yodatsu no ken wo tanin ni nigiraseru na - Ne laisse pas les autres décider de ta vie et de ta mort.)',
+          '"..." (Silence caractéristique)'
+        ],
+        equipment: [
+          { name: 'Épée Nichirin Bleue', type: 'Arme', description: 'Épée bleue symbolisant la Respiration de l\'Eau.', rarity: 'Legendary' }
+        ],
+        achievements: ['Pilier de l\'Eau', 'Créateur du Dead Calm', 'Sauveur de Tanjiro et Nezuko'],
+        weaknesses: ['Isolement social', 'Culpabilité du survivant', 'Difficulté à se faire des amis']
       }
     ]
   },
@@ -825,6 +1017,103 @@ export const animeData: Anime[] = [
         ],
         achievements: ['Évasion de la famille Zoldyck', 'Maîtrise de Godspeed', 'Protection d\'Alluka'],
         weaknesses: ['Conditionnement familial', 'Peur d\'Illumi', 'Tendance à fuir']
+      },
+      {
+        id: 'kurapika',
+        name: 'KURAPIKA',
+        nativeName: 'クラピカ',
+        title: 'The Chain User',
+        role: 'Blacklist Hunter',
+        rank: 'HUNTER',
+        image: kurapikaImg,
+        description: 'Kurapika est le dernier survivant du clan Kurta, cherchant à récupérer les yeux écarlates de son peuple.',
+        fullBio: 'Seul survivant du massacre de son clan par la Brigade Fantôme, Kurapika a dédié sa vie à récupérer les yeux écarlates volés et à venger les siens. Ses chaînes sont devenues son arme signature.',
+        personality: ['Intelligent', 'Déterminé', 'Vengeur', 'Loyal', 'Stratégique', 'Obsessionnel'],
+        stats: { power: 85, speed: 88, technique: 95, intelligence: 98, stamina: 75, agility: 86 },
+        status: { age: '17', birthday: '4 Avril', height: '171 cm', weight: '59 kg', bloodType: 'AB', status: 'Alive', occupation: 'Blacklist Hunter', origin: 'Région de Lukso' },
+        affiliation: { team: 'Hunter Association / Nostrade Family', role: 'Hunter / Bodyguard', allies: ['Gon Freecss', 'Killua Zoldyck', 'Leorio Paladiknight'] },
+        skills: [
+          { name: 'Chain Jail', type: 'Attack', description: 'Chaîne emprisonnant et forçant Zetsu.', level: 95 },
+          { name: 'Emperor Time', type: 'Passive', description: 'Yeux écarlates donnant accès à toutes les catégories Nen.', level: 98 },
+          { name: 'Judgment Chain', type: 'Attack', description: 'Chaîne entrant dans le cœur avec des conditions mortelles.', level: 92 },
+          { name: 'Dowsing Chain', type: 'Support', description: 'Chaîne détectant les mensonges et localisant les cibles.', level: 88 }
+        ],
+        relationships: [
+          { name: 'Gon Freecss', type: 'Ami', description: 'Compagnon de l\'examen.' },
+          { name: 'Leorio Paladiknight', type: 'Ami', description: 'Le plus proche de ses amis.' },
+          { name: 'Brigade Fantôme', type: 'Ennemis', description: 'Cibles de sa vengeance.' }
+        ],
+        quotes: [
+          '"私の復讐は終わらない。" (Watashi no fukushuu wa owaranai - Ma vengeance ne finira jamais.)',
+          '"同胞の目を取り戻す。" (Douhou no me wo torimodosu - Je récupérerai les yeux de mon peuple.)',
+          '"嘘をつくな。" (Uso wo tsuku na - Ne mens pas.)'
+        ],
+        achievements: ['Défaite d\'Uvogin', 'Récupération de plusieurs paires d\'yeux', 'Rang de Hunter obtenu'],
+        weaknesses: ['Durée de vie réduite par Emperor Time', 'Obsession de la vengeance', 'Isolement émotionnel']
+      },
+      {
+        id: 'hisoka',
+        name: 'HISOKA MOROW',
+        nativeName: 'ヒソカ＝モロウ',
+        title: 'The Magician',
+        role: 'Hunter / Antagonist',
+        rank: 'HUNTER',
+        image: hisokaImg,
+        description: 'Hisoka est un combattant obsédé par les adversaires puissants, oscillant entre allié et ennemi.',
+        fullBio: 'Magicien psychopathe et combattant d\'exception, Hisoka ne vit que pour le frisson du combat contre des adversaires dignes de lui. Il laisse mûrir ses proies potentielles comme Gon.',
+        personality: ['Sadique', 'Charismatique', 'Imprévisible', 'Obsessionnel', 'Patient', 'Dangereux'],
+        stats: { power: 95, speed: 94, technique: 98, intelligence: 92, stamina: 88, agility: 96 },
+        status: { age: '28', birthday: '6 Juin', height: '187 cm', weight: '91 kg', bloodType: 'B', status: 'Alive', occupation: 'Chasseur / Combattant', origin: 'Inconnu' },
+        affiliation: { team: 'Aucune (Ex-Brigade Fantôme)', role: 'Chasseur Solitaire', allies: ['Illumi Zoldyck (parfois)'], previousAffiliations: ['Brigade Fantôme'] },
+        skills: [
+          { name: 'Bungee Gum', type: 'Attack', description: 'Aura élastique et collante aux propriétés du caoutchouc et du chewing-gum.', level: 98 },
+          { name: 'Texture Surprise', type: 'Support', description: 'Change l\'apparence des surfaces plates.', level: 90 },
+          { name: 'Card Throwing', type: 'Attack', description: 'Cartes lancées avec une précision mortelle.', level: 95 }
+        ],
+        relationships: [
+          { name: 'Gon Freecss', type: 'Proie / Intérêt', description: 'Attend qu\'il mûrisse pour l\'affronter.' },
+          { name: 'Chrollo Lucilfer', type: 'Cible', description: 'Son adversaire ultime recherché.' },
+          { name: 'Illumi Zoldyck', type: 'Allié temporaire', description: 'Relation complexe et dangereuse.' }
+        ],
+        quotes: [
+          '"ゴンはまだ熟していない。" (Gon wa mada jukushite inai - Gon n\'est pas encore mûr.)',
+          '"戦いが好きだ。" (Tatakai ga suki da - J\'aime les combats.)',
+          '"♠♥♦♣" (Symboles de cartes caractéristiques)'
+        ],
+        achievements: ['Victoire au Heaven\'s Arena', 'Survie après décapitation', 'Défaite de membres de la Brigade'],
+        weaknesses: ['Obsession du combat', 'Imprévisibilité', 'Tendances psychopathiques']
+      },
+      {
+        id: 'leorio',
+        name: 'LEORIO PALADIKNIGHT',
+        nativeName: 'レオリオ＝パラディナイト',
+        title: 'The Doctor Hunter',
+        role: 'Hunter / Medical Student',
+        rank: 'HUNTER',
+        image: leorioImg,
+        description: 'Leorio est un Hunter aspirant médecin, déterminé à soigner les pauvres gratuitement.',
+        fullBio: 'Derrière son apparence cupide se cache un cœur d\'or. Leorio veut devenir médecin pour aider ceux qui ne peuvent pas payer, comme son ami d\'enfance décédé faute de soins.',
+        personality: ['Passionné', 'Loyal', 'Colérique', 'Généreux', 'Déterminé', 'Émotionnel'],
+        stats: { power: 70, speed: 65, technique: 60, intelligence: 85, stamina: 75, agility: 62 },
+        status: { age: '21', birthday: '3 Mars', height: '193 cm', weight: '85 kg', bloodType: 'O', status: 'Alive', occupation: 'Étudiant en médecine / Hunter', origin: 'Inconnu' },
+        affiliation: { team: 'Hunter Association', role: 'Hunter / Futur Médecin', allies: ['Gon Freecss', 'Killua Zoldyck', 'Kurapika'] },
+        skills: [
+          { name: 'Emission Punch', type: 'Attack', description: 'Coup de poing projeté à distance via le Nen.', level: 75 },
+          { name: 'Medical Knowledge', type: 'Passive', description: 'Connaissances médicales avancées.', level: 85 },
+          { name: 'Negotiation', type: 'Support', description: 'Capacités de négociation et de persuasion.', level: 80 }
+        ],
+        relationships: [
+          { name: 'Gon Freecss', type: 'Ami', description: 'Comme un petit frère.' },
+          { name: 'Kurapika', type: 'Meilleur Ami', description: 'Lien très fort.' },
+          { name: 'Killua Zoldyck', type: 'Ami', description: 'Relation de taquineries.' }
+        ],
+        quotes: [
+          '"俺は医者になる!" (Ore wa isha ni naru! - Je serai médecin!)',
+          '"金のためじゃない!" (Kane no tame janai! - Ce n\'est pas pour l\'argent!)',
+          '"友達を傷つけるな!" (Tomodachi wo kizutsukeru na! - Ne blesse pas mes amis!)'
+        ],
+        achievements: ['Réussite de l\'examen Hunter', 'Élection du nouveau président', 'Études de médecine'],
+        weaknesses: ['Combat limité', 'Impulsif', 'Manque d\'entraînement Nen']
       }
     ]
   },

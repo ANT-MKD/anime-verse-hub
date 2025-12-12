@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Skill } from '@/data/animeData';
-import { Sword, Shield, Heart, Sparkles } from 'lucide-react';
+import { Sword, Shield, Heart, Sparkles, Zap } from 'lucide-react';
 
 interface SkillCardProps {
   skill: Skill;
@@ -12,6 +12,7 @@ const typeIcons = {
   Defense: Shield,
   Support: Heart,
   Passive: Sparkles,
+  Ultimate: Zap,
 };
 
 const typeColors = {
@@ -19,11 +20,12 @@ const typeColors = {
   Defense: 'from-blue-500/20 to-cyan-500/20 border-blue-500/30',
   Support: 'from-green-500/20 to-emerald-500/20 border-green-500/30',
   Passive: 'from-purple-500/20 to-pink-500/20 border-purple-500/30',
+  Ultimate: 'from-yellow-500/20 to-amber-500/20 border-yellow-500/30',
 };
 
 const SkillCard = ({ skill, index }: SkillCardProps) => {
-  const Icon = typeIcons[skill.type];
-  const colorClass = typeColors[skill.type];
+  const Icon = typeIcons[skill.type] || Sparkles;
+  const colorClass = typeColors[skill.type] || typeColors.Passive;
 
   return (
     <motion.div
