@@ -110,8 +110,9 @@ const CharacterProfile = () => {
             <div className="order-2 lg:order-1">
               {/* Hero Section */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className="flex flex-col lg:flex-row gap-8 mb-12"
               >
                 {/* Character Image */}
@@ -135,9 +136,9 @@ const CharacterProfile = () => {
                   {/* Rank Badge */}
                   {character.rank && (
                     <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.3 }}
+                      initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                      animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                      transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                       className="absolute -top-3 -left-3 flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground font-bold text-sm shadow-lg shadow-primary/30"
                     >
                       <Star className="w-4 h-4" />
@@ -149,9 +150,9 @@ const CharacterProfile = () => {
                 {/* Character Info */}
                 <div className="flex-1">
                   <motion.div
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}
+                    transition={{ delay: 0.3, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   >
                     {/* Title */}
                     <p className="text-primary text-sm font-semibold uppercase tracking-wider mb-2">
@@ -205,11 +206,11 @@ const CharacterProfile = () => {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeSection}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="glass-card rounded-2xl p-6 lg:p-8"
+                  initial={{ opacity: 0, y: 30, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -20, scale: 0.98 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="glass-card rounded-2xl p-6 lg:p-8 backdrop-blur-xl"
                 >
                   {activeSection === 'about' && (
                     <div className="space-y-8">
