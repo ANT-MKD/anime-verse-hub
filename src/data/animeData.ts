@@ -1193,6 +1193,77 @@ export const animeData: Anime[] = [
         quotes: ['"Je suis un vengeur."', '"Les liens... je les ai tous coupés."', '"Naruto... tu es mon seul ami."'],
         achievements: ['Défaite d\'Orochimaru', 'Défaite d\'Itachi', 'Protection du monde ninja'],
         weaknesses: ['Isolement émotionnel', 'Passé traumatique', 'Difficulté à exprimer ses émotions']
+      },
+      {
+        id: 'kakashi',
+        name: 'KAKASHI HATAKE',
+        nativeName: 'はたけカカシ',
+        title: 'Copy Ninja',
+        role: 'Jonin / Hokage',
+        rank: 'SIXTH HOKAGE',
+        image: kakashiImg,
+        description: 'Kakashi est le Copy Ninja légendaire et le mentor de la Team 7.',
+        fullBio: 'Génie dès son plus jeune âge, Kakashi a vécu de nombreuses tragédies qui ont façonné son caractère. Son Sharingan hérité de son ami Obito et ses 1000 techniques copiées en font une légende.',
+        personality: ['Décontracté', 'Intelligent', 'Protecteur', 'Mystérieux', 'Loyal', 'Sage'],
+        stats: { power: 88, speed: 90, technique: 95, intelligence: 96, stamina: 78, agility: 88 },
+        status: { age: '46', birthday: '15 Septembre', height: '181 cm', weight: '67.5 kg', bloodType: 'O', status: 'Alive', occupation: 'Sixième Hokage (Retraité)', origin: 'Konohagakure' },
+        affiliation: { team: 'Konoha / Team 7', role: 'Sensei / Sixième Hokage', allies: ['Naruto Uzumaki', 'Sasuke Uchiha', 'Sakura Haruno', 'Guy Might'] },
+        skills: [
+          { name: 'Chidori', type: 'Attack', description: 'Technique de foudre originale.', level: 95 },
+          { name: 'Sharingan', type: 'Passive', description: 'Sharingan d\'Obito permettant de copier.', level: 90 },
+          { name: 'Kamui', type: 'Ultimate', description: 'Technique spatio-temporelle du Mangekyo.', level: 88 },
+          { name: 'Purple Lightning', type: 'Attack', description: 'Nouvelle technique après perte du Sharingan.', level: 85 }
+        ],
+        relationships: [
+          { name: 'Obito Uchiha', type: 'Meilleur Ami (Décédé)', description: 'Ami d\'enfance dont il a hérité le Sharingan.' },
+          { name: 'Naruto Uzumaki', type: 'Élève', description: 'A cru en lui depuis le début.' },
+          { name: 'Guy Might', type: 'Rival / Ami', description: 'Rivalité amicale légendaire.' }
+        ],
+        quotes: [
+          '"私の名はカカシ。" (Watashi no na wa Kakashi - Mon nom est Kakashi.)',
+          '"忍びの世界でルールを破る奴はクズだ。だが仲間を見捨てる奴はそれ以下だ。" (Shinobi no sekai de ruuru wo yaburu yatsu wa kuzu da. Daga nakama wo misuteru yatsu wa sore ika da - Dans le monde ninja, ceux qui brisent les règles sont des déchets. Mais ceux qui abandonnent leurs amis sont pires.)',
+          '"やれやれ。" (Yare yare - Eh bien, eh bien.)'
+        ],
+        equipment: [
+          { name: 'Bandeau de Konoha', type: 'Accessoire', description: 'Symbole du village caché.', rarity: 'Common' }
+        ],
+        achievements: ['Sixième Hokage', 'Survivant de la Quatrième Grande Guerre', 'Mentor de l\'équipe légendaire'],
+        weaknesses: ['Perte du Sharingan', 'Traumatismes passés', 'Chakra limité sans Sharingan']
+      },
+      {
+        id: 'itachi',
+        name: 'ITACHI UCHIHA',
+        nativeName: 'うちはイタチ',
+        title: 'Clan Killer',
+        role: 'Rogue Ninja',
+        rank: 'S-RANK',
+        image: itachiImg,
+        description: 'Itachi a massacré son propre clan pour protéger Konoha et son petit frère Sasuke.',
+        fullBio: 'Considéré comme l\'un des ninjas les plus talentueux de l\'histoire, Itachi a sacrifié sa réputation et sa vie pour protéger Konoha de l\'intérieur de l\'Akatsuki. Son amour pour Sasuke était sa seule faiblesse.',
+        personality: ['Stoïque', 'Sacrificiel', 'Intelligent', 'Aimant', 'Mystérieux', 'Tragique'],
+        stats: { power: 94, speed: 95, technique: 100, intelligence: 98, stamina: 70, agility: 92 },
+        status: { age: '21', birthday: '9 Juin', height: '178 cm', weight: '58 kg', bloodType: 'AB', status: 'Deceased', occupation: 'Membre de l\'Akatsuki', origin: 'Konohagakure' },
+        affiliation: { team: 'Akatsuki', role: 'Membre', allies: ['Kisame Hoshigaki', 'Sasuke Uchiha (secrètement)'], previousAffiliations: ['Konoha ANBU'] },
+        skills: [
+          { name: 'Tsukuyomi', type: 'Ultimate', description: 'Genjutsu suprême de torture mentale.', level: 100 },
+          { name: 'Amaterasu', type: 'Attack', description: 'Flammes noires inextinguibles.', level: 98 },
+          { name: 'Susanoo', type: 'Defense', description: 'Avatar de chakra avec épée Totsuka et bouclier Yata.', level: 95 },
+          { name: 'Izanami', type: 'Ultimate', description: 'Genjutsu ultime piégeant dans une boucle.', level: 92 }
+        ],
+        relationships: [
+          { name: 'Sasuke Uchiha', type: 'Frère', description: 'Tout ce qu\'il a fait était pour le protéger.' },
+          { name: 'Shisui Uchiha', type: 'Meilleur Ami (Décédé)', description: 'L\'a influencé vers la paix.' }
+        ],
+        quotes: [
+          '"許せサスケ、これが最後だ。" (Yuruse Sasuke, kore ga saigo da - Pardonne-moi Sasuke, c\'est la dernière fois.)',
+          '"お前は弱い。なぜ弱いか？憎しみが足りないからだ。" (Omae wa yowai. Naze yowai ka? Nikushimi ga tarinai kara da - Tu es faible. Pourquoi es-tu faible ? Parce que tu manques de haine.)',
+          '"俺は常にお前を愛している。" (Ore wa tsuneni omae wo aishiteiru - Je t\'aimerai toujours.)'
+        ],
+        equipment: [
+          { name: 'Bague Akatsuki - Shu', type: 'Accessoire', description: 'Bague de membre de l\'Akatsuki.', rarity: 'Epic' }
+        ],
+        achievements: ['Massacre du clan Uchiha (sacrifice)', 'Protection secrète de Konoha', 'Libération d\'Edo Tensei'],
+        weaknesses: ['Maladie mortelle', 'Amour pour Sasuke', 'Yeux affaiblis']
       }
     ]
   },
@@ -1329,6 +1400,73 @@ export const animeData: Anime[] = [
         quotes: ['"Je suis là!"', '"Plus Ultra!"', '"Maintenant, c\'est ton tour."'],
         achievements: ['Symbole de Paix pendant 40 ans', 'Défaite d\'All For One', 'Transmission réussie du One For All'],
         weaknesses: ['Blessure d\'All For One', 'Temps de transformation limité', 'Incapable de combattre maintenant']
+      },
+      {
+        id: 'uraraka',
+        name: 'OCHAKO URARAKA',
+        nativeName: '麗日お茶子',
+        title: 'Uravity',
+        role: 'Hero Student',
+        rank: 'TOP STUDENT',
+        image: urarakaImg,
+        description: 'Uraraka possède l\'Alter Zero Gravity, lui permettant d\'annuler la gravité des objets.',
+        fullBio: 'Issue d\'une famille pauvre, Ochako veut devenir héroïne pour gagner de l\'argent et aider ses parents. Son alter lui permet de faire flotter les objets qu\'elle touche.',
+        personality: ['Joyeuse', 'Déterminée', 'Empathique', 'Courageuse', 'Économe', 'Loyale'],
+        stats: { power: 72, speed: 78, technique: 82, intelligence: 80, stamina: 75, agility: 85 },
+        status: { age: '16', birthday: '27 Décembre', height: '156 cm', weight: '47 kg', bloodType: 'B', status: 'Alive', occupation: 'Étudiante Héroïne', origin: 'Mie, Japon' },
+        affiliation: { team: 'U.A. High School - Classe 1-A', role: 'Étudiante Héroïne', allies: ['Izuku Midoriya', 'Tsuyu Asui', 'Tenya Iida'] },
+        skills: [
+          { name: 'Zero Gravity', type: 'Support', description: 'Annule la gravité des objets touchés.', level: 85 },
+          { name: 'Gunhead Martial Arts', type: 'Attack', description: 'Techniques de combat rapproché.', level: 78 },
+          { name: 'Comet Home Run', type: 'Attack', description: 'Utilise la gravité zéro pour des frappes dévastatrices.', level: 75 }
+        ],
+        relationships: [
+          { name: 'Izuku Midoriya', type: 'Amour', description: 'Sentiments profonds mais non exprimés.' },
+          { name: 'Tsuyu Asui', type: 'Meilleure Amie', description: 'Amitié sincère et soutien mutuel.' }
+        ],
+        quotes: [
+          '"私、頑張るよ!" (Watashi, ganbaru yo! - Je vais faire de mon mieux!)',
+          '"お父さんとお母さんのために!" (Otou-san to okaa-san no tame ni! - Pour papa et maman!)',
+          '"デク君..." (Deku-kun... - Deku...)'
+        ],
+        achievements: ['Développement de techniques de combat', 'Résistance à la nausée', 'Sauvetage de nombreux civils'],
+        weaknesses: ['Nausée après utilisation prolongée', 'Combat rapproché limité', 'Limite de poids flottant']
+      },
+      {
+        id: 'aizawa',
+        name: 'SHOTA AIZAWA',
+        nativeName: '相澤消太',
+        title: 'Eraserhead',
+        role: 'Pro Hero / Teacher',
+        rank: 'UNDERGROUND HERO',
+        image: aizawaImg,
+        description: 'Aizawa est le professeur principal de la classe 1-A et le héros underground Eraserhead.',
+        fullBio: 'Héros underground préférant l\'ombre aux projecteurs, Aizawa peut annuler les Alters des autres en les regardant. Son dévouement envers ses élèves est absolu malgré son apparence apathique.',
+        personality: ['Apathique', 'Rationnel', 'Protecteur', 'Strict', 'Dévoué', 'Pragmatique'],
+        stats: { power: 70, speed: 82, technique: 95, intelligence: 92, stamina: 65, agility: 88 },
+        status: { age: '31', birthday: '8 Novembre', height: '183 cm', weight: '76 kg', bloodType: 'B', status: 'Alive', occupation: 'Professeur / Héros Pro', origin: 'Japon' },
+        affiliation: { team: 'U.A. High School', role: 'Professeur Principal Classe 1-A', allies: ['Hizashi Yamada', 'Classe 1-A', 'Oboro Shirakumo'] },
+        skills: [
+          { name: 'Erasure', type: 'Passive', description: 'Annule les Alters en regardant la cible.', level: 95 },
+          { name: 'Binding Cloth', type: 'Attack', description: 'Écharpe de capture pour immobiliser.', level: 90 },
+          { name: 'Combat Expert', type: 'Attack', description: 'Expert en combat sans Alter.', level: 88 }
+        ],
+        relationships: [
+          { name: 'Hizashi Yamada', type: 'Meilleur Ami', description: 'Ami depuis l\'école.' },
+          { name: 'Classe 1-A', type: 'Élèves', description: 'Les protège de sa vie.' },
+          { name: 'Eri', type: 'Figure Paternelle', description: 'L\'a accueillie chez lui.' }
+        ],
+        quotes: [
+          '"寝るぞ。" (Neru zo - Je vais dormir.)',
+          '"合理的じゃない。" (Gouriteki janai - Ce n\'est pas rationnel.)',
+          '"お前らは俺の生徒だ。" (Omaera wa ore no seito da - Vous êtes mes élèves.)'
+        ],
+        equipment: [
+          { name: 'Binding Cloth', type: 'Arme', description: 'Écharpe spéciale en fibre de carbone.', rarity: 'Epic' },
+          { name: 'Lunettes de Protection', type: 'Accessoire', description: 'Cache ses yeux pour des attaques surprises.', rarity: 'Rare' }
+        ],
+        achievements: ['Survie à l\'attaque USJ', 'Protection de la classe 1-A', 'Défaite de nombreux vilains'],
+        weaknesses: ['Yeux secs après utilisation prolongée', 'Inefficace contre mutants', 'Manque de sommeil chronique']
       }
     ]
   },
@@ -1441,6 +1579,73 @@ export const animeData: Anime[] = [
         quotes: ['"Je ne frappe jamais une femme."', '"La nourriture est un cadeau des mers!"', '"Je trouverai All Blue!"'],
         achievements: ['Éveil de l\'exosquelette Germa', 'Prime de 1.032 milliard', 'Défaite de Queen'],
         weaknesses: ['Ne peut pas frapper les femmes', 'Susceptible aux charmes féminins', 'Saigne du nez facilement']
+      },
+      {
+        id: 'nami',
+        name: 'NAMI',
+        nativeName: 'ナミ',
+        title: 'Cat Burglar',
+        role: 'Navigator',
+        rank: 'NAVIGATOR',
+        image: namiImg,
+        description: 'Nami est la navigatrice géniale de l\'équipage du Chapeau de Paille.',
+        fullBio: 'Ancienne voleuse travaillant pour Arlong pour racheter son village, Nami a été libérée par Luffy. Sa capacité à lire le temps et naviguer fait d\'elle un atout irremplaçable.',
+        personality: ['Intelligente', 'Cupide', 'Courageuse', 'Protectrice', 'Débrouillarde', 'Loyale'],
+        stats: { power: 55, speed: 70, technique: 90, intelligence: 95, stamina: 65, agility: 75 },
+        status: { age: '20', birthday: '3 Juillet', height: '170 cm', weight: 'Secret', bloodType: 'X', status: 'Alive', occupation: 'Navigatrice Pirate', origin: 'Village de Cocoyama' },
+        affiliation: { team: 'Équipage du Chapeau de Paille', role: 'Navigatrice', allies: ['Monkey D. Luffy', 'Roronoa Zoro', 'Sanji'] },
+        skills: [
+          { name: 'Clima-Tact', type: 'Attack', description: 'Arme créant des phénomènes météorologiques.', level: 88 },
+          { name: 'Thunder Tempo', type: 'Attack', description: 'Crée des éclairs dévastateurs.', level: 85 },
+          { name: 'Navigation', type: 'Passive', description: 'Capacité de navigation inégalée.', level: 100 },
+          { name: 'Weather Reading', type: 'Passive', description: 'Prédiction météorologique instinctive.', level: 95 }
+        ],
+        relationships: [
+          { name: 'Monkey D. Luffy', type: 'Capitaine', description: 'Lui fait confiance totalement.' },
+          { name: 'Nojiko', type: 'Sœur', description: 'Sœur adoptive qu\'elle aime profondément.' },
+          { name: 'Sanji', type: 'Nakama', description: 'Utilise son admiration à son avantage.' }
+        ],
+        quotes: [
+          '"お金！" (Okane! - L\'argent!)',
+          '"航海士として！" (Koukaishi toshite! - En tant que navigatrice!)',
+          '"助けて..." (Tasukete... - À l\'aide...)'
+        ],
+        equipment: [
+          { name: 'Clima-Tact Zeus', type: 'Arme', description: 'Bâton météo avec Zeus intégré.', rarity: 'Legendary' }
+        ],
+        achievements: ['Prime de 366 millions de Berrys', 'Cartographie de nombreuses îles', 'Maîtrise de Zeus'],
+        weaknesses: ['Combat physique limité', 'Cupidité excessive', 'Peur des ennemis puissants']
+      },
+      {
+        id: 'robin',
+        name: 'NICO ROBIN',
+        nativeName: 'ニコ・ロビン',
+        title: 'Devil Child',
+        role: 'Archaeologist',
+        rank: 'ARCHAEOLOGIST',
+        image: robinImg,
+        description: 'Robin est l\'archéologue de l\'équipage, seule survivante d\'Ohara capable de lire les Ponéglyphes.',
+        fullBio: 'Dernière survivante du massacre d\'Ohara, Robin a vécu en fuite pendant 20 ans. Elle a rejoint l\'équipage de Luffy et a enfin trouvé une famille.',
+        personality: ['Calme', 'Intelligente', 'Mystérieuse', 'Morbide', 'Loyale', 'Protectrice'],
+        stats: { power: 80, speed: 75, technique: 92, intelligence: 98, stamina: 78, agility: 82 },
+        status: { age: '30', birthday: '6 Février', height: '188 cm', weight: 'Secret', bloodType: 'S', status: 'Alive', occupation: 'Archéologue Pirate', origin: 'Ohara' },
+        affiliation: { team: 'Équipage du Chapeau de Paille', role: 'Archéologue', allies: ['Monkey D. Luffy', 'Franky', 'Saul'], previousAffiliations: ['Baroque Works'] },
+        skills: [
+          { name: 'Hana Hana no Mi', type: 'Attack', description: 'Peut faire pousser des parties de son corps partout.', level: 95 },
+          { name: 'Demonio Fleur', type: 'Ultimate', description: 'Forme démoniaque géante.', level: 92 },
+          { name: 'Poneglyph Reading', type: 'Passive', description: 'Seule personne vivante capable de lire les Ponéglyphes.', level: 100 }
+        ],
+        relationships: [
+          { name: 'Monkey D. Luffy', type: 'Capitaine', description: 'Lui a donné une raison de vivre.' },
+          { name: 'Saul', type: 'Ami (Décédé)', description: 'Lui a appris à sourire.' }
+        ],
+        quotes: [
+          '"生きたい！" (Ikitai! - Je veux vivre!)',
+          '"歴史の真実..." (Rekishi no shinjitsu... - La vérité de l\'histoire...)',
+          '"ふふふ..." (Fufufu... - Rire caractéristique)'
+        ],
+        achievements: ['Prime de 930 millions de Berrys', 'Éveil du Hana Hana no Mi', 'Lecture de nombreux Ponéglyphes'],
+        weaknesses: ['Vulnérable à l\'eau de mer', 'Passé traumatique', 'Pensées morbides']
       }
     ]
   },
@@ -1549,6 +1754,69 @@ export const animeData: Anime[] = [
         quotes: ['"Eren..."', '"Je suis forte."', '"Je le protégerai toujours."'],
         achievements: ['Top 1 de sa promotion', 'Nombreux Titans éliminés', 'Fin du Grondement'],
         weaknesses: ['Obsession pour Eren', 'Difficulté émotionnelle', 'Manque d\'indépendance']
+      },
+      {
+        id: 'armin',
+        name: 'ARMIN ARLERT',
+        nativeName: 'アルミン・アルレルト',
+        title: 'Colossal Titan',
+        role: 'Strategist',
+        rank: 'COMMANDER',
+        image: arminImg,
+        description: 'Armin est le stratège génial de l\'équipe et détenteur du Titan Colossal.',
+        fullBio: 'Physiquement faible mais intellectuellement brillant, Armin a toujours rêvé de voir le monde extérieur. Il est devenu le stratège le plus important de l\'humanité et a hérité du Titan Colossal.',
+        personality: ['Intelligent', 'Courageux', 'Empathique', 'Stratégique', 'Déterminé', 'Idéaliste'],
+        stats: { power: 90, speed: 70, technique: 75, intelligence: 100, stamina: 75, agility: 72 },
+        status: { age: '19', birthday: '3 Novembre', height: '163 cm', weight: '55 kg', bloodType: 'A', status: 'Alive', occupation: 'Commandant', origin: 'Shiganshina' },
+        affiliation: { team: 'Bataillon d\'Exploration', role: 'Commandant', allies: ['Eren Yeager', 'Mikasa Ackerman', 'Jean Kirstein'] },
+        skills: [
+          { name: 'Colossal Titan', type: 'Ultimate', description: 'Titan de 60m avec explosion de transformation.', level: 95 },
+          { name: 'Strategic Mind', type: 'Passive', description: 'Capacité d\'analyse et stratégie exceptionnelle.', level: 100 },
+          { name: 'ODM Gear', type: 'Support', description: 'Utilisation de l\'équipement tridimensionnel.', level: 75 }
+        ],
+        relationships: [
+          { name: 'Eren Yeager', type: 'Meilleur Ami', description: 'Ami d\'enfance malgré les conflits.' },
+          { name: 'Mikasa Ackerman', type: 'Amie', description: 'Trio inséparable depuis l\'enfance.' },
+          { name: 'Annie Leonhart', type: 'Intérêt', description: 'Relation complexe et ambiguë.' }
+        ],
+        quotes: [
+          '"海を見たい..." (Umi wo mitai... - Je veux voir la mer...)',
+          '"誰かの特別になりたい。" (Dareka no tokubetsu ni naritai - Je veux être spécial pour quelqu\'un.)',
+          '"戦わなければ勝てない。" (Tatakawanakereba katenai - Si on ne se bat pas, on ne peut pas gagner.)'
+        ],
+        achievements: ['Commandant du Bataillon', 'Héritage du Titan Colossal', 'Fin de la guerre'],
+        weaknesses: ['Force physique limitée', 'Durée de vie réduite', 'Culpabilité']
+      },
+      {
+        id: 'erwin',
+        name: 'ERWIN SMITH',
+        nativeName: 'エルヴィン・スミス',
+        title: 'The Devil',
+        role: 'Commander',
+        rank: 'COMMANDER',
+        image: erwinImg,
+        description: 'Erwin était le commandant charismatique du Bataillon d\'Exploration.',
+        fullBio: 'Leader visionnaire et stratège brillant, Erwin a mené le Bataillon vers la découverte de la vérité sur les Titans. Sa détermination et ses sacrifices ont changé le cours de l\'histoire.',
+        personality: ['Charismatique', 'Déterminé', 'Stratégique', 'Sacrificiel', 'Mystérieux', 'Inspirant'],
+        stats: { power: 80, speed: 82, technique: 88, intelligence: 98, stamina: 85, agility: 80 },
+        status: { age: '35', birthday: '14 Octobre', height: '188 cm', weight: '92 kg', bloodType: 'AB', status: 'Deceased', occupation: 'Commandant', origin: 'Mur Rose' },
+        affiliation: { team: 'Bataillon d\'Exploration', role: 'Commandant', allies: ['Levi Ackerman', 'Hange Zoë', 'Mike Zacharias'] },
+        skills: [
+          { name: 'Leadership', type: 'Passive', description: 'Capacité à inspirer et diriger.', level: 100 },
+          { name: 'Strategy', type: 'Passive', description: 'Plans tactiques brillants.', level: 98 },
+          { name: 'ODM Gear', type: 'Attack', description: 'Compétent même avec un bras.', level: 85 }
+        ],
+        relationships: [
+          { name: 'Levi Ackerman', type: 'Bras Droit', description: 'Confiance absolue mutuelle.' },
+          { name: 'Hange Zoë', type: 'Successeur', description: 'A transmis son héritage.' }
+        ],
+        quotes: [
+          '"心臓を捧げよ!" (Shinzou wo sasageyo! - Offrez vos cœurs!)',
+          '"進め！" (Susume! - En avant!)',
+          '"私は... 真実を知りたかった。" (Watashi wa... shinjitsu wo shiritakatta - Je voulais... connaître la vérité.)'
+        ],
+        achievements: ['Récupération de Shiganshina', 'Découverte de la vérité', 'Charge finale légendaire'],
+        weaknesses: ['Obsession de la vérité', 'Sacrifice de nombreux soldats', 'Mort']
       }
     ]
   },
@@ -1626,6 +1894,71 @@ export const animeData: Anime[] = [
         quotes: ['"Je suis le Prince des Saiyans!"', '"Kakarot!"', '"La fierté d\'un Saiyan n\'a pas de limites!"'],
         achievements: ['Maîtrise de l\'Ultra Ego', 'Défaite de Toppo', 'Rédemption complète'],
         weaknesses: ['Orgueil excessif', 'Obsession de Goku', 'Passé sombre']
+      },
+      {
+        id: 'gohan',
+        name: 'SON GOHAN',
+        nativeName: '孫悟飯',
+        title: 'The Scholar Warrior',
+        role: 'Half-Saiyan',
+        rank: 'ULTIMATE',
+        image: gohanImg,
+        description: 'Gohan est le fils aîné de Goku, un hybride Saiyan-Humain au potentiel illimité.',
+        fullBio: 'Fils de Goku et Chi-Chi, Gohan possède un potentiel de combat supérieur à celui de son père. Malgré sa préférence pour les études, il a sauvé le monde à plusieurs reprises.',
+        personality: ['Intelligent', 'Gentil', 'Courageux', 'Studieux', 'Protecteur', 'Pacifiste'],
+        stats: { power: 98, speed: 92, technique: 88, intelligence: 95, stamina: 90, agility: 90 },
+        status: { age: '23', birthday: '18 Mai', height: '176 cm', weight: '61 kg', bloodType: 'Saiyan/Humain', status: 'Alive', occupation: 'Chercheur', origin: 'Mont Paozu' },
+        affiliation: { team: 'Z Fighters', role: 'Membre', allies: ['Son Goku', 'Piccolo', 'Videl'] },
+        skills: [
+          { name: 'Masenko', type: 'Attack', description: 'Technique enseignée par Piccolo.', level: 85 },
+          { name: 'Kamehameha', type: 'Attack', description: 'Technique héritée de son père.', level: 90 },
+          { name: 'Beast Form', type: 'Ultimate', description: 'Transformation ultime libérant tout son potentiel.', level: 100 },
+          { name: 'Potential Unleashed', type: 'Passive', description: 'Potentiel débloqué par le Kaïoshin.', level: 95 }
+        ],
+        relationships: [
+          { name: 'Son Goku', type: 'Père', description: 'Admiration et respect mutuel.' },
+          { name: 'Piccolo', type: 'Mentor / Ami', description: 'Lien père-fils plus fort qu\'avec Goku.' },
+          { name: 'Videl', type: 'Épouse', description: 'Amour de sa vie.' }
+        ],
+        quotes: [
+          '"もう止まれない!" (Mou tomarenai! - Je ne peux plus m\'arrêter!)',
+          '"父さんを... 許さない!" (Tou-san wo... yurusanai! - Je ne te pardonnerai pas... pour papa!)',
+          '"僕は学者になりたい。" (Boku wa gakusha ni naritai - Je veux devenir chercheur.)'
+        ],
+        achievements: ['Défaite de Cell', 'Beast Form', 'Équilibre vie de famille et combats'],
+        weaknesses: ['Manque d\'entraînement', 'Trop pacifiste', 'Potentiel sous-utilisé']
+      },
+      {
+        id: 'piccolo',
+        name: 'PICCOLO',
+        nativeName: 'ピッコロ',
+        title: 'The Namekian Warrior',
+        role: 'Namekian',
+        rank: 'GOD LEVEL',
+        image: piccoloImg,
+        description: 'Piccolo est un guerrier Namek, autrefois ennemi de Goku devenu l\'un de ses plus grands alliés.',
+        fullBio: 'Réincarnation du Roi Piccolo, il était destiné à détruire Goku. Mais en entraînant Gohan, il a découvert sa capacité à aimer et est devenu un protecteur de la Terre.',
+        personality: ['Stoïque', 'Sage', 'Protecteur', 'Stratégique', 'Froid', 'Dévoué'],
+        stats: { power: 92, speed: 88, technique: 90, intelligence: 92, stamina: 88, agility: 86 },
+        status: { age: 'Inconnu', birthday: '9 Mai', height: '226 cm', weight: '116 kg', bloodType: 'Namek', status: 'Alive', occupation: 'Guerrier / Mentor', origin: 'Planète Namek' },
+        affiliation: { team: 'Z Fighters', role: 'Membre', allies: ['Son Gohan', 'Son Goku', 'Vegeta'] },
+        skills: [
+          { name: 'Special Beam Cannon', type: 'Attack', description: 'Rayon perçant concentré.', level: 90 },
+          { name: 'Orange Piccolo', type: 'Ultimate', description: 'Transformation ultime via Shenron.', level: 98 },
+          { name: 'Regeneration', type: 'Passive', description: 'Régénération des membres.', level: 85 },
+          { name: 'Fusion', type: 'Support', description: 'Fusion avec d\'autres Nameks.', level: 88 }
+        ],
+        relationships: [
+          { name: 'Son Gohan', type: 'Élève / Fils adoptif', description: 'Le considère comme son fils.' },
+          { name: 'Son Goku', type: 'Ami / Rival', description: 'D\'ennemi à allié.' }
+        ],
+        quotes: [
+          '"逃げろ悟飯!" (Nigero Gohan! - Fuis Gohan!)',
+          '"俺は神と悪魔の融合体だ。" (Ore wa kami to akuma no yuugoutai da - Je suis la fusion d\'un dieu et d\'un démon.)',
+          '"死ぬな!" (Shinu na! - Ne meurs pas!)'
+        ],
+        achievements: ['Fusion avec Kami', 'Orange Piccolo', 'Mentor de Gohan'],
+        weaknesses: ['Eau (Nameks n\'en ont pas besoin)', 'Attachement à Gohan', 'Origine démoniaque']
       }
     ]
   },
@@ -1705,6 +2038,71 @@ export const animeData: Anime[] = [
         quotes: ['"Si tu ne peux pas gagner au jeu, si tu ne peux pas résoudre le puzzle, tu es juste un perdant."', '"Je soupçonne Light Yagami d\'être Kira à 5%."', '"Je suis la justice."'],
         achievements: ['Identification de Kira', 'Résolution de nombreuses affaires mondiales', 'Formation de Near et Mello'],
         weaknesses: ['Obsession pour les sucreries', 'Méthodes parfois illégales', 'Isolement social']
+      },
+      {
+        id: 'misa',
+        name: 'MISA AMANE',
+        nativeName: '弥海砂',
+        title: 'Second Kira',
+        role: 'Death Note Owner',
+        rank: 'KIRA',
+        image: misaImg,
+        description: 'Misa est une idole pop dévouée à Kira après qu\'il ait tué le meurtrier de ses parents.',
+        fullBio: 'Model et idole pop, Misa possède les yeux de Shinigami lui permettant de voir les vrais noms. Son amour obsessionnel pour Light fait d\'elle un outil précieux mais dangereux.',
+        personality: ['Dévouée', 'Naïve', 'Enjouée', 'Obsessionnelle', 'Manipulable', 'Courageuse'],
+        stats: { power: 20, speed: 45, technique: 60, intelligence: 55, stamina: 50, agility: 50 },
+        status: { age: '19', birthday: '25 Décembre', height: '152 cm', weight: '36 kg', bloodType: 'AB', status: 'Deceased', occupation: 'Idole / Second Kira', origin: 'Kyoto, Japon' },
+        affiliation: { team: 'Kira', role: 'Second Kira', allies: ['Light Yagami', 'Rem'] },
+        skills: [
+          { name: 'Shinigami Eyes', type: 'Passive', description: 'Voit les vrais noms et durée de vie.', level: 100 },
+          { name: 'Death Note', type: 'Ultimate', description: 'Possède son propre Death Note.', level: 85 },
+          { name: 'Acting', type: 'Support', description: 'Compétences d\'actrice pour la dissimulation.', level: 75 }
+        ],
+        relationships: [
+          { name: 'Light Yagami', type: 'Amour (non réciproque)', description: 'Dévouée jusqu\'à la mort.' },
+          { name: 'Rem', type: 'Shinigami', description: 'La protège par amour.' }
+        ],
+        quotes: [
+          '"ライトは私の全て!" (Light wa watashi no subete! - Light est tout pour moi!)',
+          '"キラのために死ねる。" (Kira no tame ni shineru - Je peux mourir pour Kira.)',
+          '"ミサミサだよ～" (Misa-Misa da yo~ - C\'est Misa-Misa~)'
+        ],
+        equipment: [
+          { name: 'Death Note', type: 'Artefact', description: 'Carnet de la Shinigami Rem.', rarity: 'Mythic' }
+        ],
+        achievements: ['Identification de nombreuses cibles pour Kira', 'Survie malgré les enquêtes', 'Yeux de Shinigami'],
+        weaknesses: ['Amour aveugle', 'Intelligence limitée', 'Facilement manipulée']
+      },
+      {
+        id: 'ryuk',
+        name: 'RYUK',
+        nativeName: 'リューク',
+        title: 'The Bored Shinigami',
+        role: 'Shinigami',
+        rank: 'DEATH GOD',
+        image: ryukImg,
+        description: 'Ryuk est le Shinigami qui a laissé tomber le Death Note sur Terre par ennui.',
+        fullBio: 'Dieu de la mort s\'ennuyant dans son monde, Ryuk a laissé un Death Note tomber sur Terre pour s\'amuser. Il observe les actions de Light avec un intérêt détaché.',
+        personality: ['Ennuyé', 'Amusé', 'Neutre', 'Addictif aux pommes', 'Observateur', 'Imprévisible'],
+        stats: { power: 100, speed: 90, technique: 85, intelligence: 80, stamina: 100, agility: 88 },
+        status: { age: 'Éternel', birthday: 'Inconnu', height: '230 cm', weight: 'Inconnu', bloodType: 'Aucun', status: 'Alive', occupation: 'Shinigami', origin: 'Monde des Shinigami' },
+        affiliation: { team: 'Aucune', role: 'Observateur', allies: ['Light Yagami (temporaire)'] },
+        skills: [
+          { name: 'Death Note', type: 'Ultimate', description: 'Pouvoir de tuer en écrivant un nom.', level: 100 },
+          { name: 'Invisibility', type: 'Passive', description: 'Invisible à ceux sans Death Note.', level: 100 },
+          { name: 'Flight', type: 'Support', description: 'Capacité de voler.', level: 95 },
+          { name: 'Immortality', type: 'Passive', description: 'Vie éternelle de Shinigami.', level: 100 }
+        ],
+        relationships: [
+          { name: 'Light Yagami', type: 'Divertissement', description: 'L\'observe par amusement.' }
+        ],
+        quotes: [
+          '"人間って面白い。" (Ningen tte omoshiroi - Les humains sont intéressants.)',
+          '"リンゴ..." (Ringo... - Des pommes...)',
+          '"俺は退屈だった。" (Ore wa taikutsu datta - Je m\'ennuyais.)'
+        ],
+        achievements: ['Initiateur de l\'affaire Kira', 'Observateur neutre', 'Fin de Light'],
+        weaknesses: ['Addiction aux pommes', 'Ennui constant', 'Attachement interdit aux humains']
       }
     ]
   },
@@ -1756,6 +2154,67 @@ export const animeData: Anime[] = [
         ],
         achievements: ['Défaite d\'Aizen', 'Défaite de Yhwach', 'Sauveur de la Soul Society'],
         weaknesses: ['Manque de contrôle du Hollow', 'Impulsivité', 'Charge émotionnelle']
+      },
+      {
+        id: 'rukia',
+        name: 'RUKIA KUCHIKI',
+        nativeName: '朽木ルキア',
+        title: 'Ice Queen',
+        role: 'Shinigami Captain',
+        rank: 'CAPTAIN',
+        image: rukiaImg,
+        description: 'Rukia est la Shinigami qui a donné ses pouvoirs à Ichigo, devenue Capitaine de la 13ème Division.',
+        fullBio: 'Adoptée par la noble famille Kuchiki, Rukia a transféré ses pouvoirs à Ichigo pour sauver sa famille. Son Bankai de glace est l\'un des plus beaux et mortels.',
+        personality: ['Noble', 'Courageuse', 'Déterminée', 'Douce', 'Forte', 'Loyale'],
+        stats: { power: 88, speed: 90, technique: 95, intelligence: 88, stamina: 82, agility: 88 },
+        status: { age: '150+', birthday: '14 Janvier', height: '144 cm', weight: '33 kg', bloodType: 'Inconnu', status: 'Alive', occupation: 'Capitaine 13ème Division', origin: 'Rukongai' },
+        affiliation: { team: 'Soul Society - 13ème Division', role: 'Capitaine', allies: ['Ichigo Kurosaki', 'Renji Abarai', 'Byakuya Kuchiki'] },
+        skills: [
+          { name: 'Sode no Shirayuki', type: 'Attack', description: 'Le plus beau Zanpakuto de glace.', level: 92 },
+          { name: 'Bankai: Hakka no Togame', type: 'Ultimate', description: 'Gèle tout dans un rayon absolu.', level: 95 },
+          { name: 'Kido Master', type: 'Attack', description: 'Maîtrise des arts démoniaques.', level: 88 }
+        ],
+        relationships: [
+          { name: 'Ichigo Kurosaki', type: 'Ami proche', description: 'Lien indéfectible.' },
+          { name: 'Renji Abarai', type: 'Époux', description: 'Amour d\'enfance.' },
+          { name: 'Byakuya Kuchiki', type: 'Frère adoptif', description: 'Relation complexe mais aimante.' }
+        ],
+        quotes: [
+          '"戦え一護!" (Tatakae Ichigo! - Bats-toi Ichigo!)',
+          '"私は死神だ。" (Watashi wa Shinigami da - Je suis une Shinigami.)'
+        ],
+        achievements: ['Capitaine de Division', 'Bankai de glace', 'Défaite d\'Äs Nödt'],
+        weaknesses: ['Bankai risque de la tuer', 'Complexe d\'infériorité passé', 'Taille']
+      },
+      {
+        id: 'aizen',
+        name: 'SOSUKE AIZEN',
+        nativeName: '藍染惣右介',
+        title: 'The Mastermind',
+        role: 'Former Captain / Villain',
+        rank: 'TRANSCENDENT',
+        image: aizenImg,
+        description: 'Aizen est l\'antagoniste principal, un génie manipulateur ayant orchestré des siècles de complots.',
+        fullBio: 'Ancien capitaine de la 5ème Division, Aizen a manipulé la Soul Society pendant des siècles. Fusionné avec le Hogyoku, il a atteint un niveau de puissance transcendant.',
+        personality: ['Manipulateur', 'Génial', 'Calme', 'Arrogant', 'Calculateur', 'Charismatique'],
+        stats: { power: 100, speed: 95, technique: 100, intelligence: 100, stamina: 98, agility: 94 },
+        status: { age: 'Inconnu', birthday: '29 Mai', height: '186 cm', weight: '74 kg', bloodType: 'Inconnu', status: 'Alive', occupation: 'Prisonnier', origin: 'Soul Society' },
+        affiliation: { team: 'Hueco Mundo (Ex)', role: 'Leader', allies: ['Gin Ichimaru', 'Kaname Tosen'], previousAffiliations: ['Soul Society'] },
+        skills: [
+          { name: 'Kyoka Suigetsu', type: 'Ultimate', description: 'Hypnose totale sur les 5 sens.', level: 100 },
+          { name: 'Hogyoku Fusion', type: 'Passive', description: 'Immortalité et évolution constante.', level: 98 },
+          { name: 'Reiatsu Master', type: 'Passive', description: 'Pression spirituelle écrasante.', level: 100 }
+        ],
+        relationships: [
+          { name: 'Ichigo Kurosaki', type: 'Nemesis', description: 'Seul à l\'avoir vaincu.' },
+          { name: 'Gin Ichimaru', type: 'Subordonné', description: 'Fidèle en apparence.' }
+        ],
+        quotes: [
+          '"私を見上げろ。" (Watashi wo miagero - Lève les yeux vers moi.)',
+          '"計画通り。" (Keikaku doori - Tout comme prévu.)'
+        ],
+        achievements: ['Création des Arrancars', 'Manipulation de la Soul Society', 'Transcendance'],
+        weaknesses: ['Arrogance fatale', 'Emprisonné', 'Hogyoku l\'a rejeté']
       }
     ]
   }
