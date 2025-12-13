@@ -12,7 +12,11 @@ import CharactersPage from "./pages/CharactersPage";
 import FavoritesPage from "./pages/FavoritesPage";
 import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
+import ComparatorPage from "./pages/ComparatorPage";
+import QuizPage from "./pages/QuizPage";
+import BattleSimulator from "./pages/BattleSimulator";
 import AIChatbot from "./components/AIChatbot";
+import RandomCharacterButton from "./components/RandomCharacterButton";
 
 const queryClient = new QueryClient();
 
@@ -29,11 +33,15 @@ const App = () => (
             <Route path="/characters" element={<CharactersPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/comparator" element={<ComparatorPage />} />
+            <Route path="/quiz" element={<QuizPage />} />
+            <Route path="/battle" element={<BattleSimulator />} />
             <Route path="/anime/:animeId" element={<AnimeCharacters />} />
             <Route path="/anime/:animeId/character/:characterId" element={<CharacterProfile />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <AIChatbot />
+          <RandomCharacterButton />
         </BrowserRouter>
       </FavoritesProvider>
     </TooltipProvider>
