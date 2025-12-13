@@ -22,6 +22,7 @@ import ParticleBackground from '@/components/ParticleBackground';
 import StatBar from '@/components/StatBar';
 import SkillCard from '@/components/SkillCard';
 import FavoriteButton from '@/components/FavoriteButton';
+import SocialShare from '@/components/SocialShare';
 import { getCharacterById, getAnimeById } from '@/data/animeData';
 
 type Section = 'about' | 'affiliation' | 'status' | 'relationships' | 'skills' | 'equipment' | 'achievements';

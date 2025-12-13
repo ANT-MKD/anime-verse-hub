@@ -14,8 +14,9 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Animes', path: '/animes' },
     { name: 'Characters', path: '/characters' },
-    { name: 'Favoris', path: '/favorites' },
-    { name: 'About', path: '/about' },
+    { name: 'Comparateur', path: '/comparator' },
+    { name: 'Quiz', path: '/quiz' },
+    { name: 'Combat', path: '/battle' },
   ];
 
   const isActive = (path: string) => location.pathname === path;

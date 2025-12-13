@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import ParticleBackground from '@/components/ParticleBackground';
 import AnimeCard from '@/components/AnimeCard';
+import CharacterOfTheDay from '@/components/CharacterOfTheDay';
+import InteractiveFeatures from '@/components/InteractiveFeatures';
 import { animeData } from '@/data/animeData';
 import { Sparkles, ChevronDown } from 'lucide-react';
 
@@ -133,6 +135,12 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Character of the Day/Week */}
+      <CharacterOfTheDay />
+
+      {/* Interactive Features */}
+      <InteractiveFeatures />
 
       {/* Features Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
