@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import ComparatorPage from "./pages/ComparatorPage";
 import QuizPage from "./pages/QuizPage";
 import BattleSimulator from "./pages/BattleSimulator";
+import TimelinePage from "./pages/TimelinePage";
 import AIChatbot from "./components/AIChatbot";
 import RandomCharacterButton from "./components/RandomCharacterButton";
 
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/comparator" element={<ComparatorPage />} />
             <Route path="/quiz" element={<QuizPage />} />
             <Route path="/battle" element={<BattleSimulator />} />
+            <Route path="/timeline" element={<TimelinePage />} />
             <Route path="/anime/:animeId" element={<AnimeCharacters />} />
             <Route path="/anime/:animeId/character/:characterId" element={<CharacterProfile />} />
             <Route path="*" element={<NotFound />} />
