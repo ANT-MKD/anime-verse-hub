@@ -14,6 +14,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Animes', path: '/animes' },
     { name: 'Characters', path: '/characters' },
+    { name: 'Timeline', path: '/timeline' },
     { name: 'Comparateur', path: '/comparator' },
     { name: 'Quiz', path: '/quiz' },
     { name: 'Combat', path: '/battle' },
