@@ -15,7 +15,8 @@ import {
   Trophy,
   AlertTriangle,
   BookOpen,
-  Sparkles
+  Sparkles,
+  Network
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import ParticleBackground from '@/components/ParticleBackground';
@@ -23,9 +24,11 @@ import StatBar from '@/components/StatBar';
 import SkillCard from '@/components/SkillCard';
 import FavoriteButton from '@/components/FavoriteButton';
 import SocialShare from '@/components/SocialShare';
+import RelationshipGraph from '@/components/RelationshipGraph';
+import VoiceActorInfo from '@/components/VoiceActorInfo';
 import { getCharacterById, getAnimeById } from '@/data/animeData';
 
-type Section = 'about' | 'affiliation' | 'status' | 'relationships' | 'skills' | 'equipment' | 'achievements';
+type Section = 'about' | 'affiliation' | 'status' | 'relationships' | 'skills' | 'equipment' | 'achievements' | 'graph';
 
 const CharacterProfile = () => {
   const { animeId, characterId } = useParams<{ animeId: string; characterId: string }>();
@@ -33,6 +36,76 @@ const CharacterProfile = () => {
   
   const anime = animeId ? getAnimeById(animeId) : undefined;
   const character = animeId && characterId ? getCharacterById(animeId, characterId) : undefined;
+
+  // Voice actor data mapping
+  const voiceActorData: Record<string, { jp: string; jpNative: string; en: string }> = {
+    'hinata': { jp: 'Murase Ayumu', jpNative: '村瀬歩', en: 'Bryson Baugus' },
+    'kageyama': { jp: 'Ishikawa Kaito', jpNative: '石川界人', en: 'Scott Gibbs' },
+    'tsukishima': { jp: 'Uchiyama Kouki', jpNative: '内山昂輝', en: 'Micah Solusod' },
+    'nishinoya': { jp: 'Okamoto Nobuhiko', jpNative: '岡本信彦', en: 'Greg Ayres' },
+    'tanaka': { jp: 'Hayashi Yuu', jpNative: '林勇', en: 'Ian Sinclair' },
+    'oikawa': { jp: 'Namikawa Daisuke', jpNative: '浪川大輔', en: 'Chris Patton' },
+    'sung-jinwoo': { jp: 'Sakamaki Manabu', jpNative: '坂巻学', en: 'Aleks Le' },
+    'cha-haein': { jp: 'Ueda Reina', jpNative: '上田麗奈', en: 'Anairis Quinones' },
+    'beru': { jp: 'Shimono Hiro', jpNative: '下野紘', en: 'Howard Wang' },
+    'jinho': { jp: 'Yamashita Seiichiro', jpNative: '山下誠一郎', en: 'Zeno Robinson' },
+    'gojo': { jp: 'Nakamura Yuichi', jpNative: '中村悠一', en: 'Kaiji Tang' },
+    'itadori': { jp: 'Enoki Junya', jpNative: '榎木淳弥', en: 'Adam McArthur' },
+    'megumi': { jp: 'Uchida Yuuma', jpNative: '内田雄馬', en: 'Robbie Daymond' },
+    'nobara': { jp: 'Seto Asami', jpNative: '瀬戸麻沙美', en: 'Anne Yatco' },
+    'sukuna': { jp: 'Suwabe Junichi', jpNative: '諏訪部順一', en: 'Ray Chase' },
+    'nanami': { jp: 'Tsuda Kenjiro', jpNative: '津田健次郎', en: 'David Vincent' },
+    'tanjiro': { jp: 'Hanae Natsuki', jpNative: '花江夏樹', en: 'Zach Aguilar' },
+    'nezuko': { jp: 'Kitou Akari', jpNative: '鬼頭明里', en: 'Abby Trott' },
+    'zenitsu': { jp: 'Shimono Hiro', jpNative: '下野紘', en: 'Aleks Le' },
+    'inosuke': { jp: 'Matsuoka Yoshitsugu', jpNative: '松岡禎丞', en: 'Bryce Papenbrook' },
+    'rengoku': { jp: 'Hino Satoshi', jpNative: '日野聡', en: 'Mark Whitten' },
+    'giyu': { jp: 'Sakurai Takahiro', jpNative: '櫻井孝宏', en: 'Johnny Yong Bosch' },
+    'gon': { jp: 'Han Megumi', jpNative: '潘めぐみ', en: 'Erica Mendez' },
+    'killua': { jp: 'Ise Mariya', jpNative: '伊瀬茉莉也', en: 'Cristina Vee' },
+    'kurapika': { jp: 'Sawashiro Miyuki', jpNative: '沢城みゆき', en: 'Erika Harlacher' },
+    'hisoka': { jp: 'Namikawa Daisuke', jpNative: '浪川大輔', en: 'Keith Silverstein' },
+    'leorio': { jp: 'Fujiwara Keiji', jpNative: '藤原啓治', en: 'Matthew Mercer' },
+    'naruto': { jp: 'Takeuchi Junko', jpNative: '竹内順子', en: 'Maile Flanagan' },
+    'sasuke': { jp: 'Sugiyama Noriaki', jpNative: '杉山紀彰', en: 'Yuri Lowenthal' },
+    'kakashi': { jp: 'Inoue Kazuhiko', jpNative: '井上和彦', en: 'Dave Wittenberg' },
+    'itachi': { jp: 'Ishikawa Hideo', jpNative: '石川英郎', en: 'Crispin Freeman' },
+    'deku': { jp: 'Yamashita Daiki', jpNative: '山下大輝', en: 'Justin Briner' },
+    'bakugo': { jp: 'Okamoto Nobuhiko', jpNative: '岡本信彦', en: 'Clifford Chapin' },
+    'todoroki': { jp: 'Kajiwara Gakuto', jpNative: '梶原岳人', en: 'David Matranga' },
+    'all-might': { jp: 'Miyake Kenta', jpNative: '三宅健太', en: 'Christopher Sabat' },
+    'uraraka': { jp: 'Sakura Ayane', jpNative: '佐倉綾音', en: 'Luci Christian' },
+    'aizawa': { jp: 'Suwabe Junichi', jpNative: '諏訪部順一', en: 'Alex Organ' },
+    'luffy': { jp: 'Tanaka Mayumi', jpNative: '田中真弓', en: 'Colleen Clinkenbeard' },
+    'zoro': { jp: 'Nakai Kazuya', jpNative: '中井和哉', en: 'Christopher Sabat' },
+    'sanji': { jp: 'Hirata Hiroaki', jpNative: '平田広明', en: 'Eric Vale' },
+    'nami': { jp: 'Okamura Akemi', jpNative: '岡村明美', en: 'Luci Christian' },
+    'robin': { jp: 'Yamaguchi Yuriko', jpNative: '山口由里子', en: 'Stephanie Young' },
+    'eren': { jp: 'Kaji Yuki', jpNative: '梶裕貴', en: 'Bryce Papenbrook' },
+    'levi': { jp: 'Kamiya Hiroshi', jpNative: '神谷浩史', en: 'Matthew Mercer' },
+    'mikasa': { jp: 'Ishikawa Yui', jpNative: '石川由依', en: 'Trina Nishimura' },
+    'armin': { jp: 'Inoue Marina', jpNative: '井上麻里奈', en: 'Josh Grelle' },
+    'erwin': { jp: 'Ono Daisuke', jpNative: '小野大輔', en: 'J. Michael Tatum' },
+    'goku': { jp: 'Nozawa Masako', jpNative: '野沢雅子', en: 'Sean Schemmel' },
+    'vegeta': { jp: 'Horikawa Ryo', jpNative: '堀川りょう', en: 'Christopher Sabat' },
+    'gohan': { jp: 'Nozawa Masako', jpNative: '野沢雅子', en: 'Kyle Hebert' },
+    'piccolo': { jp: 'Furukawa Toshio', jpNative: '古川登志夫', en: 'Christopher Sabat' },
+    'light': { jp: 'Miyano Mamoru', jpNative: '宮野真守', en: 'Brad Swaile' },
+    'l-lawliet': { jp: 'Yamaguchi Kappei', jpNative: '山口勝平', en: 'Alessandro Juliani' },
+    'misa': { jp: 'Hirano Aya', jpNative: '平野綾', en: 'Shannon Chan-Kent' },
+    'ryuk': { jp: 'Nakamura Shido', jpNative: '中村獅童', en: 'Brian Drummond' },
+    'ichigo': { jp: 'Morita Masakazu', jpNative: '森田成一', en: 'Johnny Yong Bosch' },
+    'rukia': { jp: 'Orikasa Fumiko', jpNative: '折笠富美子', en: 'Michelle Ruff' },
+    'aizen': { jp: 'Hayami Show', jpNative: '速水奨', en: 'Kyle Hebert' },
+  };
+
+  const getVoiceActor = (charId: string, lang: 'jp' | 'en') => {
+    return voiceActorData[charId]?.[lang] || 'Non documenté';
+  };
+
+  const getVoiceActorNative = (charId: string) => {
+    return voiceActorData[charId]?.jpNative;
+  };
 
   if (!character || !anime) {
     return (
@@ -67,6 +140,7 @@ const CharacterProfile = () => {
     { id: 'affiliation', label: 'AFFILIATION', icon: <Users className="w-4 h-4" /> },
     { id: 'status', label: 'STATUS', icon: <UserCircle className="w-4 h-4" /> },
     { id: 'relationships', label: 'RELATIONS', icon: <Heart className="w-4 h-4" /> },
+    { id: 'graph', label: 'GRAPHE', icon: <Network className="w-4 h-4" /> },
     { id: 'skills', label: 'COMPÉTENCES', icon: <Swords className="w-4 h-4" /> },
     { id: 'equipment', label: 'ÉQUIPEMENT', icon: <Package className="w-4 h-4" /> },
     { id: 'achievements', label: 'EXPLOITS', icon: <Trophy className="w-4 h-4" /> },
@@ -124,8 +198,13 @@ const CharacterProfile = () => {
                       alt={character.name}
                       className="w-full h-full object-cover"
                     />
-                    {/* Favorite Button */}
-                    <div className="absolute top-4 right-4 z-10">
+                    {/* Action Buttons */}
+                    <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+                      <SocialShare 
+                        url={window.location.href}
+                        title={`Découvrez ${character.name} de ${anime.title}`}
+                        description={character.description}
+                      />
                       <FavoriteButton 
                         animeId={animeId!}
                         characterId={characterId!}
@@ -373,11 +452,22 @@ const CharacterProfile = () => {
                             <div>
                               <p className="font-semibold text-foreground">{rel.name}</p>
                               <p className="text-sm text-muted-foreground">{rel.type}</p>
+                              {rel.description && (
+                                <p className="text-xs text-muted-foreground/70 mt-1">{rel.description}</p>
+                              )}
                             </div>
                           </motion.div>
                         ))}
                       </div>
                     </div>
+                  )}
+
+                  {activeSection === 'graph' && (
+                    <RelationshipGraph 
+                      character={character} 
+                      animeId={animeId!} 
+                      theme={anime.theme} 
+                    />
                   )}
 
                   {activeSection === 'skills' && (
@@ -498,6 +588,15 @@ const CharacterProfile = () => {
                     </motion.button>
                   ))}
                 </motion.nav>
+
+                {/* Voice Actor Info */}
+                <VoiceActorInfo 
+                  japanese={{ 
+                    name: getVoiceActor(character.id, 'jp'), 
+                    nativeName: getVoiceActorNative(character.id) 
+                  }}
+                  english={{ name: getVoiceActor(character.id, 'en') }}
+                />
 
                 {/* Quick Stats Card */}
                 <motion.div
