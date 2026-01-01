@@ -4,17 +4,20 @@ import { Search, Menu, X, Heart } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import SearchModal from './SearchModal';
+import { useGlobalSearch } from '@/hooks/useGlobalSearch';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
+  
+  useGlobalSearch(() => setSearchOpen(true));
 
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Animes', path: '/animes' },
     { name: 'Characters', path: '/characters' },
-    { name: 'Timeline', path: '/timeline' },
+    { name: 'Tier List', path: '/tierlist' },
     { name: 'Comparateur', path: '/comparator' },
     { name: 'Quiz', path: '/quiz' },
     { name: 'Combat', path: '/battle' },
@@ -65,9 +68,13 @@ const Navbar = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSearchOpen(true)}
-                className="p-2 rounded-full hover:bg-muted/50 transition-colors"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-muted/50 transition-colors"
               >
-                <Search className="w-5 h-5 text-muted-foreground" />
+                <Search className="w-4 h-4 text-muted-foreground" />
+                <span className="hidden lg:flex items-center gap-1 text-xs text-muted-foreground">
+                  <kbd className="px-1.5 py-0.5 rounded bg-muted/80 font-mono">⌘</kbd>
+                  <kbd className="px-1.5 py-0.5 rounded bg-muted/80 font-mono">K</kbd>
+                </span>
               </motion.button>
 
               {/* Favorites */}
