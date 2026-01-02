@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import SearchModal from './SearchModal';
 import { useGlobalSearch } from '@/hooks/useGlobalSearch';
+import ThemeSwitcher from './ThemeSwitcher';
+import UserProfileModal from './UserProfileModal';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -88,14 +90,11 @@ const Navbar = () => {
                 </motion.button>
               </Link>
 
-              {/* Sign Up Button */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="hidden sm:flex px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:shadow-lg hover:shadow-primary/30 transition-shadow"
-              >
-                Sign Up
-              </motion.button>
+              {/* Theme Switcher */}
+              <ThemeSwitcher />
+
+              {/* User Profile */}
+              <UserProfileModal />
 
               {/* Mobile Menu Button */}
               <motion.button
@@ -135,9 +134,10 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <button className="w-full px-4 py-3 mt-4 rounded-lg bg-primary text-primary-foreground font-medium text-sm">
-                Sign Up
-              </button>
+              <div className="flex items-center gap-4 px-4 py-3 mt-4">
+                <ThemeSwitcher />
+                <UserProfileModal />
+              </div>
             </div>
           </motion.div>
         </div>
