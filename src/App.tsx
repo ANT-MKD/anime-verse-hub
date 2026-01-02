@@ -19,6 +19,7 @@ import QuizPage from "./pages/QuizPage";
 import BattleSimulator from "./pages/BattleSimulator";
 import TimelinePage from "./pages/TimelinePage";
 import TierListPage from "./pages/TierListPage";
+import ProfilePage from "./pages/ProfilePage";
 import AIChatbot from "./components/AIChatbot";
 import RandomCharacterButton from "./components/RandomCharacterButton";
 
@@ -44,6 +45,7 @@ const App = () => (
                 <Route path="/battle" element={<BattleSimulator />} />
                 <Route path="/timeline" element={<TimelinePage />} />
                 <Route path="/tierlist" element={<TierListPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/anime/:animeId" element={<AnimeCharacters />} />
                 <Route path="/anime/:animeId/character/:characterId" element={<CharacterProfile />} />
                 <Route path="*" element={<NotFound />} />
