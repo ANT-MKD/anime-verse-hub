@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import SearchModal from './SearchModal';
 import { useGlobalSearch } from '@/hooks/useGlobalSearch';
 import ThemeSwitcher from './ThemeSwitcher';
-import UserProfileModal from './UserProfileModal';
+import UserProfileDropdown from './UserProfileDropdown';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -94,7 +94,7 @@ const Navbar = () => {
               <ThemeSwitcher />
 
               {/* User Profile */}
-              <UserProfileModal />
+              <UserProfileDropdown />
 
               {/* Mobile Menu Button */}
               <motion.button
@@ -136,7 +136,7 @@ const Navbar = () => {
               ))}
               <div className="flex items-center gap-4 px-4 py-3 mt-4">
                 <ThemeSwitcher />
-                <UserProfileModal />
+                <UserProfileDropdown />
               </div>
             </div>
           </motion.div>
