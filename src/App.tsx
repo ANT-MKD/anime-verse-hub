@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { UserProfileProvider } from "@/contexts/UserProfileContext";
-import ProtectedRoute from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import AnimeCharacters from "./pages/AnimeCharacters";
 import CharacterProfile from "./pages/CharacterProfile";
@@ -37,20 +36,20 @@ const App = () => (
             <Sonner />
             <BrowserRouter>
               <Routes>
+                <Route path="/" element={<Index />} />
                 <Route path="/auth" element={<AuthPage />} />
-                <Route path="/" element={<ProtectedRoute><Index /></ProtectedRoute>} />
-                <Route path="/animes" element={<ProtectedRoute><AnimesPage /></ProtectedRoute>} />
-                <Route path="/characters" element={<ProtectedRoute><CharactersPage /></ProtectedRoute>} />
-                <Route path="/favorites" element={<ProtectedRoute><FavoritesPage /></ProtectedRoute>} />
-                <Route path="/about" element={<ProtectedRoute><AboutPage /></ProtectedRoute>} />
-                <Route path="/comparator" element={<ProtectedRoute><ComparatorPage /></ProtectedRoute>} />
-                <Route path="/quiz" element={<ProtectedRoute><QuizPage /></ProtectedRoute>} />
-                <Route path="/battle" element={<ProtectedRoute><BattleSimulator /></ProtectedRoute>} />
-                <Route path="/timeline" element={<ProtectedRoute><TimelinePage /></ProtectedRoute>} />
-                <Route path="/tierlist" element={<ProtectedRoute><TierListPage /></ProtectedRoute>} />
-                <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
-                <Route path="/anime/:animeId" element={<ProtectedRoute><AnimeCharacters /></ProtectedRoute>} />
-                <Route path="/anime/:animeId/character/:characterId" element={<ProtectedRoute><CharacterProfile /></ProtectedRoute>} />
+                <Route path="/animes" element={<AnimesPage />} />
+                <Route path="/characters" element={<CharactersPage />} />
+                <Route path="/favorites" element={<FavoritesPage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/comparator" element={<ComparatorPage />} />
+                <Route path="/quiz" element={<QuizPage />} />
+                <Route path="/battle" element={<BattleSimulator />} />
+                <Route path="/timeline" element={<TimelinePage />} />
+                <Route path="/tierlist" element={<TierListPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/anime/:animeId" element={<AnimeCharacters />} />
+                <Route path="/anime/:animeId/character/:characterId" element={<CharacterProfile />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <AIChatbot />
