@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -12,11 +12,13 @@ import { useUserProfile } from '@/contexts/UserProfileContext';
 import { toast } from 'sonner';
 
 const UserProfileDropdown = () => {
+  const navigate = useNavigate();
   const { profile, isProfileSet, updateProfile } = useUserProfile();
 
   const handleLogout = () => {
     updateProfile({ pseudo: '', avatar: '', bio: '' });
     toast.success('Déconnexion réussie');
+    navigate('/auth');
   };
 
   return (

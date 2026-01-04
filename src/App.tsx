@@ -20,6 +20,7 @@ import BattleSimulator from "./pages/BattleSimulator";
 import TimelinePage from "./pages/TimelinePage";
 import TierListPage from "./pages/TierListPage";
 import ProfilePage from "./pages/ProfilePage";
+import AuthPage from "./pages/AuthPage";
 import AIChatbot from "./components/AIChatbot";
 import RandomCharacterButton from "./components/RandomCharacterButton";
 
@@ -36,6 +37,7 @@ const App = () => (
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/auth" element={<AuthPage />} />
                 <Route path="/animes" element={<AnimesPage />} />
                 <Route path="/characters" element={<CharactersPage />} />
                 <Route path="/favorites" element={<FavoritesPage />} />
