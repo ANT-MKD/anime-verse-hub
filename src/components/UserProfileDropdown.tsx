@@ -60,18 +60,14 @@ const UserProfileDropdown = () => {
           </Link>
         </DropdownMenuItem>
         
-        {isProfileSet && (
-          <>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem 
-              onClick={handleLogout}
-              className="cursor-pointer text-destructive focus:text-destructive"
-            >
-              <LogOut className="h-4 w-4 mr-2" />
-              <span>Déconnexion</span>
-            </DropdownMenuItem>
-          </>
-        )}
+        <DropdownMenuSeparator />
+        <DropdownMenuItem 
+          onClick={handleLogout}
+          className="cursor-pointer text-destructive focus:text-destructive"
+        >
+          <LogOut className="h-4 w-4 mr-2" />
+          <span>Déconnexion</span>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
