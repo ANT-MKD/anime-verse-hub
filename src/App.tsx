@@ -24,6 +24,16 @@ import AuthPage from "./pages/AuthPage";
 import AIChatbot from "./components/AIChatbot";
 import RandomCharacterButton from "./components/RandomCharacterButton";
 
+// Admin Pages
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminUsersPage from "./pages/admin/AdminUsersPage";
+import AdminAnimesPage from "./pages/admin/AdminAnimesPage";
+import AdminCharactersPage from "./pages/admin/AdminCharactersPage";
+import AdminTierListPage from "./pages/admin/AdminTierListPage";
+import AdminQuizPage from "./pages/admin/AdminQuizPage";
+import AdminBattlesPage from "./pages/admin/AdminBattlesPage";
+import AdminSettingsPage from "./pages/admin/AdminSettingsPage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -50,6 +60,17 @@ const App = () => (
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/anime/:animeId" element={<AnimeCharacters />} />
                 <Route path="/anime/:animeId/character/:characterId" element={<CharacterProfile />} />
+                
+                {/* Admin Routes */}
+                <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/admin/users" element={<AdminUsersPage />} />
+                <Route path="/admin/animes" element={<AdminAnimesPage />} />
+                <Route path="/admin/characters" element={<AdminCharactersPage />} />
+                <Route path="/admin/tierlist" element={<AdminTierListPage />} />
+                <Route path="/admin/quiz" element={<AdminQuizPage />} />
+                <Route path="/admin/battles" element={<AdminBattlesPage />} />
+                <Route path="/admin/settings" element={<AdminSettingsPage />} />
+                
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <AIChatbot />
