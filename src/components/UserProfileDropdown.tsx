@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { User, LogOut } from 'lucide-react';
+import { User, LogOut, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -57,6 +57,13 @@ const UserProfileDropdown = () => {
           <Link to="/profile" className="flex items-center gap-2">
             <User className="h-4 w-4" />
             <span>Mon Profil</span>
+          </Link>
+        </DropdownMenuItem>
+        
+        <DropdownMenuItem asChild className="cursor-pointer">
+          <Link to="/admin" className="flex items-center gap-2">
+            <Shield className="h-4 w-4" />
+            <span>Administration</span>
           </Link>
         </DropdownMenuItem>
         
