@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useUserProfile } from '@/contexts/UserProfileContext';
 import { toast } from 'sonner';
 
+const ADMIN_EMAIL = 'kironjallow12@gmail.com';
 const defaultAvatars = ['🦊', '👹', '⚡', '🔥', '💀', '🌸', '🗡️', '👊', '🎭', '🐉', '👁️', '💎'];
 
 const AuthPage = () => {
@@ -39,7 +40,23 @@ const AuthPage = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate login - check localStorage for saved user
+    const isAdminLogin = loginData.email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
+    
+    if (isAdminLogin) {
+      // Admin login - any password works
+      updateProfile({
+        pseudo: 'Admin',
+        avatar: '👑',
+        bio: 'Administrateur du site',
+        email: loginData.email
+      });
+      toast.success('Bienvenue Administrateur !');
+      navigate('/admin');
+      setIsLoading(false);
+      return;
+    }
+    
+    // Regular user login - check localStorage
     const savedUsers = JSON.parse(localStorage.getItem('anime-users') || '[]');
     const user = savedUsers.find((u: any) => u.email === loginData.email && u.password === loginData.password);
     
@@ -47,7 +64,8 @@ const AuthPage = () => {
       updateProfile({
         pseudo: user.pseudo,
         avatar: user.avatar,
-        bio: user.bio
+        bio: user.bio,
+        email: user.email
       });
       toast.success(`Bienvenue ${user.pseudo} !`);
       navigate('/');
@@ -98,7 +116,8 @@ const AuthPage = () => {
     updateProfile({
       pseudo: registerData.pseudo,
       avatar: registerData.avatar,
-      bio: registerData.bio
+      bio: registerData.bio,
+      email: registerData.email
     });
     
     toast.success('Compte créé avec succès !');
