@@ -1,21 +1,28 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
+const ADMIN_EMAIL = 'kironjallow12@gmail.com';
+
 export interface UserProfile {
   pseudo: string;
   avatar: string;
   bio: string;
+  email?: string;
+  isAdmin?: boolean;
 }
 
 interface UserProfileContextType {
   profile: UserProfile;
   updateProfile: (updates: Partial<UserProfile>) => void;
   isProfileSet: boolean;
+  isAdmin: boolean;
 }
 
 const defaultProfile: UserProfile = {
   pseudo: '',
   avatar: '',
   bio: '',
+  email: '',
+  isAdmin: false,
 };
 
 const UserProfileContext = createContext<UserProfileContextType | undefined>(undefined);
@@ -43,15 +50,17 @@ export const UserProfileProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const updateProfile = (updates: Partial<UserProfile>) => {
-    const newProfile = { ...profile, ...updates };
+    const isAdmin = updates.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase();
+    const newProfile = { ...profile, ...updates, isAdmin };
     setProfile(newProfile);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(newProfile));
   };
 
   const isProfileSet = profile.pseudo.trim() !== '';
+  const isAdmin = profile.email?.toLowerCase() === ADMIN_EMAIL.toLowerCase();
 
   return (
-    <UserProfileContext.Provider value={{ profile, updateProfile, isProfileSet }}>
+    <UserProfileContext.Provider value={{ profile, updateProfile, isProfileSet, isAdmin }}>
       {children}
     </UserProfileContext.Provider>
   );
