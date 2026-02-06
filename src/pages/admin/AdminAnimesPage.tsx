@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Search, Film, Star, Calendar, Play, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Search, Film, Star, Calendar, Play, Users, Plus, Edit, Trash2, Eye } from 'lucide-react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { useAdminData } from '@/hooks/useAdminData';
 import { cn } from '@/lib/utils';
+import { toast } from 'sonner';
 
 const AdminAnimesPage = () => {
+  const navigate = useNavigate();
   const { animes, isLoading } = useAdminData();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState<string>('all');
@@ -18,6 +20,19 @@ const AdminAnimesPage = () => {
     const matchesGenre = selectedGenre === 'all' || anime.genre.includes(selectedGenre);
     return matchesSearch && matchesGenre;
   });
+
+  const handleDelete = (animeId: string, animeTitle: string) => {
+    if (confirm(`Êtes-vous sûr de vouloir supprimer ${animeTitle} ?`)) {
+      // Get custom animes from localStorage
+      const storedCustom = localStorage.getItem('admin-custom-animes');
+      const customAnimes = storedCustom ? JSON.parse(storedCustom) : [];
+      const updatedCustom = customAnimes.filter((a: any) => a.id !== animeId);
+      localStorage.setItem('admin-custom-animes', JSON.stringify(updatedCustom));
+      toast.success(`${animeTitle} a été supprimé`);
+      // Force refresh
+      window.location.reload();
+    }
+  };
 
   if (isLoading) {
     return (
@@ -46,16 +61,53 @@ const AdminAnimesPage = () => {
             className="w-full pl-10 pr-4 py-2 bg-muted/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
-        <select
-          value={selectedGenre}
-          onChange={(e) => setSelectedGenre(e.target.value)}
-          className="px-4 py-2 bg-muted/50 border border-border rounded-lg"
-        >
-          <option value="all">Tous les genres</option>
-          {allGenres.map(genre => (
-            <option key={genre} value={genre}>{genre}</option>
-          ))}
-        </select>
+        <div className="flex gap-3">
+          <select
+            value={selectedGenre}
+            onChange={(e) => setSelectedGenre(e.target.value)}
+            className="px-4 py-2 bg-muted/50 border border-border rounded-lg"
+          >
+            <option value="all">Tous les genres</option>
+            {allGenres.map(genre => (
+              <option key={genre} value={genre}>{genre}</option>
+            ))}
+          </select>
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => navigate('/admin/animes/new')}
+            className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium"
+          >
+            <Plus className="w-5 h-5" />
+            Ajouter
+          </motion.button>
+        </div>
+      </div>
+
+      {/* Stats Bar */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+        <div className="bg-card border border-border rounded-lg p-4 text-center">
+          <p className="text-2xl font-bold text-primary">{animes.length}</p>
+          <p className="text-sm text-muted-foreground">Total</p>
+        </div>
+        <div className="bg-card border border-border rounded-lg p-4 text-center">
+          <p className="text-2xl font-bold text-green-500">
+            {animes.filter(a => a.status === 'Completed').length}
+          </p>
+          <p className="text-sm text-muted-foreground">Terminés</p>
+        </div>
+        <div className="bg-card border border-border rounded-lg p-4 text-center">
+          <p className="text-2xl font-bold text-blue-500">
+            {animes.filter(a => a.status === 'Ongoing').length}
+          </p>
+          <p className="text-sm text-muted-foreground">En cours</p>
+        </div>
+        <div className="bg-card border border-border rounded-lg p-4 text-center">
+          <p className="text-2xl font-bold text-yellow-500">
+            {animes.filter(a => a.status === 'Hiatus').length}
+          </p>
+          <p className="text-sm text-muted-foreground">En pause</p>
+        </div>
       </div>
 
       {/* Animes Grid */}
@@ -129,12 +181,30 @@ const AdminAnimesPage = () => {
                 )}
               </div>
 
-              <Link
-                to={`/anime/${anime.id}`}
-                className="block w-full text-center py-2 bg-primary/10 text-primary rounded-lg font-medium hover:bg-primary/20 transition-colors"
-              >
-                Voir les personnages
-              </Link>
+              {/* Action Buttons */}
+              <div className="flex items-center gap-2 pt-2 border-t border-border">
+                <button
+                  onClick={() => navigate(`/admin/animes/${anime.id}`)}
+                  className="flex-1 flex items-center justify-center gap-2 py-2 bg-muted/50 hover:bg-muted rounded-lg text-sm font-medium transition-colors"
+                >
+                  <Eye className="w-4 h-4" />
+                  Voir
+                </button>
+                <button
+                  onClick={() => navigate(`/admin/animes/${anime.id}/edit`)}
+                  className="flex-1 flex items-center justify-center gap-2 py-2 bg-primary/10 text-primary hover:bg-primary/20 rounded-lg text-sm font-medium transition-colors"
+                >
+                  <Edit className="w-4 h-4" />
+                  Modifier
+                </button>
+                <button
+                  onClick={() => handleDelete(anime.id, anime.title)}
+                  className="p-2 hover:bg-red-500/10 text-red-500 rounded-lg transition-colors"
+                  title="Supprimer"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </motion.div>
         ))}
