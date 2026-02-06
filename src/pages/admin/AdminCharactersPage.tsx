@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Search, UserCircle, Filter } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Search, UserCircle, Plus, Edit, Trash2, Eye } from 'lucide-react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { useAdminData } from '@/hooks/useAdminData';
 import { cn } from '@/lib/utils';
+import { toast } from 'sonner';
 
 const AdminCharactersPage = () => {
+  const navigate = useNavigate();
   const { characters, animes, isLoading } = useAdminData();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedAnime, setSelectedAnime] = useState<string>('all');
@@ -20,6 +22,19 @@ const AdminCharactersPage = () => {
     const matchesRole = selectedRole === 'all' || char.role === selectedRole;
     return matchesSearch && matchesAnime && matchesRole;
   });
+
+  const handleDelete = (characterId: string, characterName: string) => {
+    if (confirm(`Êtes-vous sûr de vouloir supprimer ${characterName} ?`)) {
+      // Get custom characters from localStorage
+      const storedCustom = localStorage.getItem('admin-custom-characters');
+      const customCharacters = storedCustom ? JSON.parse(storedCustom) : [];
+      const updatedCustom = customCharacters.filter((c: any) => c.id !== characterId);
+      localStorage.setItem('admin-custom-characters', JSON.stringify(updatedCustom));
+      toast.success(`${characterName} a été supprimé`);
+      // Force refresh
+      window.location.reload();
+    }
+  };
 
   if (isLoading) {
     return (
@@ -48,7 +63,7 @@ const AdminCharactersPage = () => {
             className="w-full pl-10 pr-4 py-2 bg-muted/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-3 flex-wrap">
           <select
             value={selectedAnime}
             onChange={(e) => setSelectedAnime(e.target.value)}
@@ -69,6 +84,15 @@ const AdminCharactersPage = () => {
               <option key={role} value={role}>{role}</option>
             ))}
           </select>
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => navigate('/admin/characters/new')}
+            className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium"
+          >
+            <Plus className="w-5 h-5" />
+            Ajouter
+          </motion.button>
         </div>
       </div>
 
@@ -176,13 +200,30 @@ const AdminCharactersPage = () => {
                          char.status.status === 'Deceased' ? 'Décédé' : 'Inconnu'}
                       </span>
                     </td>
-                    <td className="p-4 text-right">
-                      <Link
-                        to={`/anime/${char.animeId}/character/${char.id}`}
-                        className="px-3 py-1.5 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary/20 transition-colors"
-                      >
-                        Voir
-                      </Link>
+                    <td className="p-4">
+                      <div className="flex items-center justify-end gap-2">
+                        <button
+                          onClick={() => navigate(`/admin/characters/${char.id}`)}
+                          className="p-2 hover:bg-muted rounded-lg transition-colors"
+                          title="Voir"
+                        >
+                          <Eye className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => navigate(`/admin/characters/${char.id}/edit`)}
+                          className="p-2 hover:bg-muted rounded-lg transition-colors"
+                          title="Modifier"
+                        >
+                          <Edit className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(char.id, char.name)}
+                          className="p-2 hover:bg-red-500/10 text-red-500 rounded-lg transition-colors"
+                          title="Supprimer"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                     </td>
                   </motion.tr>
                 );
