@@ -15,10 +15,10 @@ const AnimeCard = ({ anime, index }: AnimeCardProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       whileHover={{ y: -10, scale: 1.02 }}
-      className="group relative overflow-hidden rounded-2xl glass-card flex flex-row sm:flex-col"
+      className="group relative overflow-hidden rounded-2xl glass-card"
     >
       {/* Image */}
-      <div className="relative w-28 min-h-[120px] sm:w-full sm:aspect-[3/4] overflow-hidden shrink-0">
+      <div className="relative aspect-[3/4] overflow-hidden">
         <img
           src={anime.image}
           alt={anime.title}
@@ -26,14 +26,14 @@ const AnimeCard = ({ anime, index }: AnimeCardProps) => {
         />
         
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r sm:bg-gradient-to-t from-background via-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         
         {/* Glow Effect on Hover */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-primary/20 to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="relative sm:absolute sm:bottom-0 sm:left-0 sm:right-0 p-4 sm:p-6 flex flex-col justify-center">
+      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -41,23 +41,23 @@ const AnimeCard = ({ anime, index }: AnimeCardProps) => {
         >
           {/* Japanese Title */}
           {anime.titleJapanese && (
-            <p className="text-xs text-muted-foreground mb-1 font-medium tracking-wider">
+            <p className="text-[10px] sm:text-xs text-muted-foreground mb-0.5 sm:mb-1 font-medium tracking-wider">
               {anime.titleJapanese}
             </p>
           )}
           
           {/* Title */}
-          <h3 className="font-display text-base sm:text-xl lg:text-2xl font-bold mb-1 sm:mb-2 text-foreground group-hover:text-primary transition-colors">
+          <h3 className="font-display text-sm sm:text-xl lg:text-2xl font-bold mb-1 sm:mb-2 text-foreground group-hover:text-primary transition-colors">
             {anime.title}
           </h3>
           
-          {/* Description */}
-          <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-4 line-clamp-2 hidden sm:block">
+          {/* Description - hidden on mobile */}
+          <p className="text-sm text-muted-foreground mb-4 line-clamp-2 hidden sm:block">
             {anime.description}
           </p>
 
           {/* Character Count */}
-          <p className="text-xs text-primary mb-2 sm:mb-4">
+          <p className="text-[10px] sm:text-xs text-primary mb-2 sm:mb-4">
             {anime.characters.length} personnages disponibles
           </p>
           
@@ -66,7 +66,7 @@ const AnimeCard = ({ anime, index }: AnimeCardProps) => {
             <motion.button
               whileHover={{ x: 5 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-primary/10 border border-primary/30 text-primary text-xs sm:text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-all duration-300 group/btn"
+              className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1 sm:py-2 rounded-lg bg-primary/10 border border-primary/30 text-primary text-[10px] sm:text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-all duration-300 group/btn"
             >
               Explorer
               <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover/btn:translate-x-1" />
