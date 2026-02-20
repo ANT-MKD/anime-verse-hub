@@ -90,7 +90,8 @@ const AuthPage = () => {
       email: registerData.email,
       password: registerData.password,
       avatar: registerData.avatar,
-      bio: registerData.bio
+      bio: registerData.bio,
+      role: registerData.email === 'admin@animeverse.com' ? 'admin' : 'user'
     };
     
     savedUsers.push(newUser);
