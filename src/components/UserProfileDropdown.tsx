@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { User, LogOut } from 'lucide-react';
+import { User, LogOut, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -9,11 +9,13 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useUserProfile } from '@/contexts/UserProfileContext';
+import { useAdmin } from '@/contexts/AdminContext';
 import { toast } from 'sonner';
 
 const UserProfileDropdown = () => {
   const navigate = useNavigate();
   const { profile, isProfileSet, updateProfile } = useUserProfile();
+  const { isAdmin } = useAdmin();
 
   const handleLogout = () => {
     updateProfile({ pseudo: '', avatar: '', bio: '' });
@@ -59,6 +61,15 @@ const UserProfileDropdown = () => {
             <span>Mon Profil</span>
           </Link>
         </DropdownMenuItem>
+
+        {isAdmin && (
+          <DropdownMenuItem asChild className="cursor-pointer">
+            <Link to="/admin" className="flex items-center gap-2">
+              <Shield className="h-4 w-4 text-primary" />
+              <span className="text-primary font-medium">Administration</span>
+            </Link>
+          </DropdownMenuItem>
+        )}
         
         <DropdownMenuSeparator />
         <DropdownMenuItem 
