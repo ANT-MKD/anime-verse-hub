@@ -7,6 +7,8 @@ import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { UserProfileProvider } from "@/contexts/UserProfileContext";
 import { AdminProvider } from "@/contexts/AdminContext";
+import MaintenanceGuard from "@/components/admin/MaintenanceGuard";
+import FeatureGuard from "@/components/admin/FeatureGuard";
 import Index from "./pages/Index";
 import AnimeCharacters from "./pages/AnimeCharacters";
 import CharacterProfile from "./pages/CharacterProfile";
@@ -22,7 +24,7 @@ import TimelinePage from "./pages/TimelinePage";
 import TierListPage from "./pages/TierListPage";
 import ProfilePage from "./pages/ProfilePage";
 import AuthPage from "./pages/AuthPage";
-import AIChatbot from "./components/AIChatbot";
+import AIChatbotWrapper from "./components/AIChatbotWrapper";
 import RandomCharacterButton from "./components/RandomCharacterButton";
 
 // Admin pages
@@ -47,35 +49,37 @@ const App = () => (
               <Toaster />
               <Sonner />
               <BrowserRouter>
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/auth" element={<AuthPage />} />
-                  <Route path="/animes" element={<AnimesPage />} />
-                  <Route path="/characters" element={<CharactersPage />} />
-                  <Route path="/favorites" element={<FavoritesPage />} />
-                  <Route path="/about" element={<AboutPage />} />
-                  <Route path="/comparator" element={<ComparatorPage />} />
-                  <Route path="/quiz" element={<QuizPage />} />
-                  <Route path="/battle" element={<BattleSimulator />} />
-                  <Route path="/timeline" element={<TimelinePage />} />
-                  <Route path="/tierlist" element={<TierListPage />} />
-                  <Route path="/profile" element={<ProfilePage />} />
-                  <Route path="/anime/:animeId" element={<AnimeCharacters />} />
-                  <Route path="/anime/:animeId/character/:characterId" element={<CharacterProfile />} />
-                  
-                  {/* Admin routes */}
-                  <Route path="/admin" element={<AdminDashboard />} />
-                  <Route path="/admin/animes" element={<AdminAnimesPage />} />
-                  <Route path="/admin/characters" element={<AdminCharactersPage />} />
-                  <Route path="/admin/quiz" element={<AdminQuizPage />} />
-                  <Route path="/admin/users" element={<AdminUsersPage />} />
-                  <Route path="/admin/messages" element={<AdminMessagesPage />} />
-                  <Route path="/admin/notifications" element={<AdminNotificationsPage />} />
-                  <Route path="/admin/settings" element={<AdminSettingsPage />} />
-                  
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-                <AIChatbot />
+                <MaintenanceGuard>
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/auth" element={<AuthPage />} />
+                    <Route path="/animes" element={<AnimesPage />} />
+                    <Route path="/characters" element={<CharactersPage />} />
+                    <Route path="/favorites" element={<FavoritesPage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/comparator" element={<FeatureGuard feature="allowComparator"><ComparatorPage /></FeatureGuard>} />
+                    <Route path="/quiz" element={<FeatureGuard feature="allowQuiz"><QuizPage /></FeatureGuard>} />
+                    <Route path="/battle" element={<FeatureGuard feature="allowBattle"><BattleSimulator /></FeatureGuard>} />
+                    <Route path="/timeline" element={<TimelinePage />} />
+                    <Route path="/tierlist" element={<FeatureGuard feature="allowTierList"><TierListPage /></FeatureGuard>} />
+                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/anime/:animeId" element={<AnimeCharacters />} />
+                    <Route path="/anime/:animeId/character/:characterId" element={<CharacterProfile />} />
+                    
+                    {/* Admin routes */}
+                    <Route path="/admin" element={<AdminDashboard />} />
+                    <Route path="/admin/animes" element={<AdminAnimesPage />} />
+                    <Route path="/admin/characters" element={<AdminCharactersPage />} />
+                    <Route path="/admin/quiz" element={<AdminQuizPage />} />
+                    <Route path="/admin/users" element={<AdminUsersPage />} />
+                    <Route path="/admin/messages" element={<AdminMessagesPage />} />
+                    <Route path="/admin/notifications" element={<AdminNotificationsPage />} />
+                    <Route path="/admin/settings" element={<AdminSettingsPage />} />
+                    
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </MaintenanceGuard>
+                <AIChatbotWrapper />
                 <RandomCharacterButton />
               </BrowserRouter>
             </FavoritesProvider>

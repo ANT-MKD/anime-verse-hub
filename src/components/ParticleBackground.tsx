@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useAdmin } from '@/contexts/AdminContext';
 
 interface Particle {
   x: number;
@@ -16,9 +17,12 @@ interface ParticleBackgroundProps {
 }
 
 const ParticleBackground = ({ particleCount = 50, color = 'hsl(35, 100%, 50%)' }: ParticleBackgroundProps) => {
+  const { settings } = useAdmin();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationRef = useRef<number>();
+
+  const showParticles = settings.showParticles;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -92,6 +96,8 @@ const ParticleBackground = ({ particleCount = 50, color = 'hsl(35, 100%, 50%)' }
       }
     };
   }, [particleCount, color]);
+
+  if (!showParticles) return null;
 
   return (
     <canvas

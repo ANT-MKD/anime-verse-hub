@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useAdmin } from '@/contexts/AdminContext';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { User, Mail, Lock, Eye, EyeOff, Sparkles } from 'lucide-react';
@@ -15,6 +16,7 @@ const defaultAvatars = ['🦊', '👹', '⚡', '🔥', '💀', '🌸', '🗡️'
 const AuthPage = () => {
   const navigate = useNavigate();
   const { updateProfile } = useUserProfile();
+  const { settings } = useAdmin();
   
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -61,6 +63,10 @@ const AuthPage = () => {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!settings.allowRegistration) {
+      toast.error('Les inscriptions sont actuellement désactivées');
+      return;
+    }
     setIsLoading(true);
     
     if (registerData.password !== registerData.confirmPassword) {
