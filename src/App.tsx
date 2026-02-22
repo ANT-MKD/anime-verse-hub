@@ -31,6 +31,8 @@ import RandomCharacterButton from "./components/RandomCharacterButton";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminAnimesPage from "./pages/admin/AdminAnimesPage";
 import AdminCharactersPage from "./pages/admin/AdminCharactersPage";
+import AdminCharacterForm from "./pages/admin/AdminCharacterForm";
+import AdminCharacterView from "./pages/admin/AdminCharacterView";
 import AdminQuizPage from "./pages/admin/AdminQuizPage";
 import AdminUsersPage from "./pages/admin/AdminUsersPage";
 import AdminMessagesPage from "./pages/admin/AdminMessagesPage";
@@ -70,6 +72,9 @@ const App = () => (
                     <Route path="/admin" element={<AdminDashboard />} />
                     <Route path="/admin/animes" element={<AdminAnimesPage />} />
                     <Route path="/admin/characters" element={<AdminCharactersPage />} />
+                    <Route path="/admin/characters/new" element={<AdminCharacterForm />} />
+                    <Route path="/admin/characters/edit/:id" element={<AdminCharacterForm />} />
+                    <Route path="/admin/characters/view/:id" element={<AdminCharacterView />} />
                     <Route path="/admin/quiz" element={<AdminQuizPage />} />
                     <Route path="/admin/users" element={<AdminUsersPage />} />
                     <Route path="/admin/messages" element={<AdminMessagesPage />} />
