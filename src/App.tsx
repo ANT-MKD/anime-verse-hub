@@ -30,6 +30,8 @@ import RandomCharacterButton from "./components/RandomCharacterButton";
 // Admin pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminAnimesPage from "./pages/admin/AdminAnimesPage";
+import AdminAnimeForm from "./pages/admin/AdminAnimeForm";
+import AdminAnimeView from "./pages/admin/AdminAnimeView";
 import AdminCharactersPage from "./pages/admin/AdminCharactersPage";
 import AdminCharacterForm from "./pages/admin/AdminCharacterForm";
 import AdminCharacterView from "./pages/admin/AdminCharacterView";
@@ -71,6 +73,9 @@ const App = () => (
                     {/* Admin routes */}
                     <Route path="/admin" element={<AdminDashboard />} />
                     <Route path="/admin/animes" element={<AdminAnimesPage />} />
+                    <Route path="/admin/animes/new" element={<AdminAnimeForm />} />
+                    <Route path="/admin/animes/edit/:id" element={<AdminAnimeForm />} />
+                    <Route path="/admin/animes/view/:id" element={<AdminAnimeView />} />
                     <Route path="/admin/characters" element={<AdminCharactersPage />} />
                     <Route path="/admin/characters/new" element={<AdminCharacterForm />} />
                     <Route path="/admin/characters/edit/:id" element={<AdminCharacterForm />} />

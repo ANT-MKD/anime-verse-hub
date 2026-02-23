@@ -13,7 +13,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
 const AdminCharactersPage = () => {
-  const { getCustomCharacters, deleteCustomCharacter } = useAdmin();
+  const { getCustomCharacters, deleteCustomCharacter, addCustomCharacter, hiddenStaticCharacters, hideStaticCharacter } = useAdmin();
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [animeFilter, setAnimeFilter] = useState('all');
@@ -22,7 +22,9 @@ const AdminCharactersPage = () => {
   const customCharacters = getCustomCharacters();
 
   const combined = [
-    ...allCharacters.map(c => ({ ...c, isCustom: false })),
+    ...allCharacters
+      .filter(c => !hiddenStaticCharacters.includes(`${c.animeId}-${c.id}`))
+      .map(c => ({ ...c, isCustom: false })),
     ...customCharacters.map((c: any) => ({
       ...c, isCustom: true,
       stats: { power: c.power ?? c.stats?.power ?? 50, speed: c.speed ?? c.stats?.speed ?? 50, technique: c.technique ?? c.stats?.technique ?? 50, intelligence: c.intelligence ?? c.stats?.intelligence ?? 50, stamina: c.stamina ?? c.stats?.stamina ?? 50, agility: c.agility ?? c.stats?.agility ?? 50 }
@@ -34,6 +36,22 @@ const AdminCharactersPage = () => {
     const matchAnime = animeFilter === 'all' || c.animeId === animeFilter;
     return matchSearch && matchAnime;
   });
+
+  const handleCloneAndEdit = (char: any) => {
+    const cloneData = {
+      ...char,
+      clonedFrom: `${char.animeId}-${char.id}`,
+    };
+    delete cloneData.isCustom;
+    const newId = addCustomCharacter(cloneData);
+    toast.success('Personnage cloné en version personnalisée');
+    navigate(`/admin/characters/edit/${newId}`);
+  };
+
+  const handleDeleteStatic = (char: any) => {
+    hideStaticCharacter(`${char.animeId}-${char.id}`);
+    toast.success('Personnage masqué');
+  };
 
   return (
     <AdminLayout title="Gestion des Personnages">
@@ -74,23 +92,38 @@ const AdminCharactersPage = () => {
                   <div className="text-xs text-muted-foreground hidden sm:block">
                     PWR: {char.stats.power} · SPD: {char.stats.speed}
                   </div>
-                  {!char.isCustom && (
+
+                  {/* View */}
+                  {!char.isCustom ? (
                     <Button size="icon" variant="ghost" asChild>
                       <Link to={`/anime/${char.animeId}/character/${char.id}`}><Eye className="w-4 h-4" /></Link>
                     </Button>
+                  ) : (
+                    <Button size="icon" variant="ghost" asChild>
+                      <Link to={`/admin/characters/view/${char.id}`}><Eye className="w-4 h-4" /></Link>
+                    </Button>
                   )}
-                  {char.isCustom && (
-                    <>
-                      <Button size="icon" variant="ghost" asChild>
-                        <Link to={`/admin/characters/view/${char.id}`}><Eye className="w-4 h-4" /></Link>
-                      </Button>
-                      <Button size="icon" variant="ghost" asChild>
-                        <Link to={`/admin/characters/edit/${char.id}`}><Edit className="w-4 h-4" /></Link>
-                      </Button>
-                      <Button size="icon" variant="ghost" className="text-destructive" onClick={() => { deleteCustomCharacter(char.id); toast.success('Supprimé'); }}>
-                        <Trash2 className="w-4 h-4" />
-                      </Button>
-                    </>
+
+                  {/* Edit */}
+                  {char.isCustom ? (
+                    <Button size="icon" variant="ghost" asChild>
+                      <Link to={`/admin/characters/edit/${char.id}`}><Edit className="w-4 h-4" /></Link>
+                    </Button>
+                  ) : (
+                    <Button size="icon" variant="ghost" onClick={() => handleCloneAndEdit(char)}>
+                      <Edit className="w-4 h-4" />
+                    </Button>
+                  )}
+
+                  {/* Delete */}
+                  {char.isCustom ? (
+                    <Button size="icon" variant="ghost" className="text-destructive" onClick={() => { deleteCustomCharacter(char.id); toast.success('Supprimé'); }}>
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
+                  ) : (
+                    <Button size="icon" variant="ghost" className="text-destructive" onClick={() => handleDeleteStatic(char)}>
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
                   )}
                 </div>
               </CardContent>

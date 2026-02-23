@@ -67,15 +67,25 @@ interface AdminContextType {
   getRegisteredUsers: () => any[];
   updateUserRole: (email: string, role: string) => void;
   deleteUser: (email: string) => void;
-  // Custom CRUD
+  // Custom Animes CRUD
   getCustomAnimes: () => any[];
-  addCustomAnime: (anime: any) => void;
+  getCustomAnimeById: (id: string) => any | null;
+  addCustomAnime: (anime: any) => string;
   updateCustomAnime: (id: string, updates: any) => void;
   deleteCustomAnime: (id: string) => void;
+  // Custom Characters CRUD
   getCustomCharacters: () => any[];
-  addCustomCharacter: (char: any) => void;
+  getCustomCharacterById: (id: string) => any | null;
+  addCustomCharacter: (char: any) => string;
   updateCustomCharacter: (id: string, updates: any) => void;
   deleteCustomCharacter: (id: string) => void;
+  // Hidden static items
+  hiddenStaticAnimes: string[];
+  hiddenStaticCharacters: string[];
+  hideStaticAnime: (id: string) => void;
+  unhideStaticAnime: (id: string) => void;
+  hideStaticCharacter: (compositeId: string) => void;
+  unhideStaticCharacter: (compositeId: string) => void;
 }
 
 const defaultSettings: AdminSettings = {
@@ -100,6 +110,8 @@ const SETTINGS_KEY = 'admin-settings';
 const QUIZ_KEY = 'admin-quiz-questions';
 const CUSTOM_ANIMES_KEY = 'admin-custom-animes';
 const CUSTOM_CHARACTERS_KEY = 'admin-custom-characters';
+const HIDDEN_ANIMES_KEY = 'admin-hidden-animes';
+const HIDDEN_CHARACTERS_KEY = 'admin-hidden-characters';
 const LAST_USER_COUNT_KEY = 'admin-last-user-count';
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
@@ -110,6 +122,8 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
   const [notifications, setNotifications] = useState<AdminNotification[]>([]);
   const [settings, setSettings] = useState<AdminSettings>(defaultSettings);
   const [quizQuestions, setQuizQuestions] = useState<CustomQuizQuestion[]>([]);
+  const [hiddenStaticAnimes, setHiddenStaticAnimes] = useState<string[]>([]);
+  const [hiddenStaticCharacters, setHiddenStaticCharacters] = useState<string[]>([]);
 
   const isAdmin = profile.email === ADMIN_EMAIL || (() => {
     const users = JSON.parse(localStorage.getItem('anime-users') || '[]');
@@ -126,6 +140,10 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
     if (storedSettings) setSettings({ ...defaultSettings, ...JSON.parse(storedSettings) });
     const storedQuiz = localStorage.getItem(QUIZ_KEY);
     if (storedQuiz) setQuizQuestions(JSON.parse(storedQuiz));
+    const storedHiddenAnimes = localStorage.getItem(HIDDEN_ANIMES_KEY);
+    if (storedHiddenAnimes) setHiddenStaticAnimes(JSON.parse(storedHiddenAnimes));
+    const storedHiddenChars = localStorage.getItem(HIDDEN_CHARACTERS_KEY);
+    if (storedHiddenChars) setHiddenStaticCharacters(JSON.parse(storedHiddenChars));
   }, []);
 
   // Watch for new user registrations
@@ -153,7 +171,6 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
       }
       localStorage.setItem(LAST_USER_COUNT_KEY, String(users.length));
     };
-
     checkNewUsers();
     const interval = setInterval(checkNewUsers, 2000);
     return () => clearInterval(interval);
@@ -213,10 +230,13 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
 
   // Custom Animes CRUD
   const getCustomAnimes = () => JSON.parse(localStorage.getItem(CUSTOM_ANIMES_KEY) || '[]');
-  const addCustomAnime = (anime: any) => {
+  const getCustomAnimeById = (id: string) => getCustomAnimes().find((a: any) => a.id === id) || null;
+  const addCustomAnime = (anime: any): string => {
     const animes = getCustomAnimes();
-    animes.push({ ...anime, id: crypto.randomUUID() });
+    const newId = crypto.randomUUID();
+    animes.push({ ...anime, id: newId });
     localStorage.setItem(CUSTOM_ANIMES_KEY, JSON.stringify(animes));
+    return newId;
   };
   const updateCustomAnime = (id: string, updates: any) => {
     const animes = getCustomAnimes().map((a: any) => a.id === id ? { ...a, ...updates } : a);
@@ -229,10 +249,13 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
 
   // Custom Characters CRUD
   const getCustomCharacters = () => JSON.parse(localStorage.getItem(CUSTOM_CHARACTERS_KEY) || '[]');
-  const addCustomCharacter = (char: any) => {
+  const getCustomCharacterById = (id: string) => getCustomCharacters().find((c: any) => c.id === id) || null;
+  const addCustomCharacter = (char: any): string => {
     const chars = getCustomCharacters();
-    chars.push({ ...char, id: crypto.randomUUID() });
+    const newId = crypto.randomUUID();
+    chars.push({ ...char, id: newId });
     localStorage.setItem(CUSTOM_CHARACTERS_KEY, JSON.stringify(chars));
+    return newId;
   };
   const updateCustomCharacter = (id: string, updates: any) => {
     const chars = getCustomCharacters().map((c: any) => c.id === id ? { ...c, ...updates } : c);
@@ -241,6 +264,28 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
   const deleteCustomCharacter = (id: string) => {
     const chars = getCustomCharacters().filter((c: any) => c.id !== id);
     localStorage.setItem(CUSTOM_CHARACTERS_KEY, JSON.stringify(chars));
+  };
+
+  // Hidden static items
+  const hideStaticAnime = (id: string) => {
+    const updated = [...hiddenStaticAnimes, id];
+    setHiddenStaticAnimes(updated);
+    localStorage.setItem(HIDDEN_ANIMES_KEY, JSON.stringify(updated));
+  };
+  const unhideStaticAnime = (id: string) => {
+    const updated = hiddenStaticAnimes.filter(i => i !== id);
+    setHiddenStaticAnimes(updated);
+    localStorage.setItem(HIDDEN_ANIMES_KEY, JSON.stringify(updated));
+  };
+  const hideStaticCharacter = (compositeId: string) => {
+    const updated = [...hiddenStaticCharacters, compositeId];
+    setHiddenStaticCharacters(updated);
+    localStorage.setItem(HIDDEN_CHARACTERS_KEY, JSON.stringify(updated));
+  };
+  const unhideStaticCharacter = (compositeId: string) => {
+    const updated = hiddenStaticCharacters.filter(i => i !== compositeId);
+    setHiddenStaticCharacters(updated);
+    localStorage.setItem(HIDDEN_CHARACTERS_KEY, JSON.stringify(updated));
   };
 
   const unreadMessagesCount = messages.filter(m => !m.read).length;
@@ -254,8 +299,10 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
       addNotification, markNotificationRead, markAllNotificationsRead, deleteNotification,
       updateSettings, addQuizQuestion, updateQuizQuestion, deleteQuizQuestion,
       getRegisteredUsers, updateUserRole, deleteUser,
-      getCustomAnimes, addCustomAnime, updateCustomAnime, deleteCustomAnime,
-      getCustomCharacters, addCustomCharacter, updateCustomCharacter, deleteCustomCharacter,
+      getCustomAnimes, getCustomAnimeById, addCustomAnime, updateCustomAnime, deleteCustomAnime,
+      getCustomCharacters, getCustomCharacterById, addCustomCharacter, updateCustomCharacter, deleteCustomCharacter,
+      hiddenStaticAnimes, hiddenStaticCharacters,
+      hideStaticAnime, unhideStaticAnime, hideStaticCharacter, unhideStaticCharacter,
     }}>
       {children}
     </AdminContext.Provider>
