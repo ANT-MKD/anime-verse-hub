@@ -53,7 +53,7 @@ const BattleSimulator = () => {
     setSelectedAnime(null);
     setBattleState('idle');
     setWinner(null);
-    setBattleLog([]);
+    setBattleResult(null);
   };
 
   const calculateScore = (char: Character) => {
