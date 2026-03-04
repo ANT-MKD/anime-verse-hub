@@ -192,31 +192,8 @@ const BattleSimulator = () => {
 
             {/* Battle Log */}
             <AnimatePresence>
-              {battleLog.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="glass-card rounded-2xl p-6"
-                >
-                  <h3 className="font-display text-lg font-bold mb-4">Journal de Combat</h3>
-                  <div className="space-y-2">
-                    {battleLog.map((log, index) => (
-                      <motion.p
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.3 }}
-                        className={cn(
-                          "text-sm",
-                          log.includes('🏆') ? 'text-primary font-bold text-lg' : 'text-muted-foreground'
-                        )}
-                      >
-                        {log}
-                      </motion.p>
-                    ))}
-                  </div>
-                </motion.div>
+              {battleResult && fighter1 && fighter2 && (
+                <BattleLogDisplay fighter1={fighter1} fighter2={fighter2} result={battleResult} />
               )}
             </AnimatePresence>
           </div>
