@@ -56,51 +56,24 @@ const BattleSimulator = () => {
     setBattleResult(null);
   };
 
-  const calculateScore = (char: Character) => {
-    const { power, speed, technique, intelligence, stamina, agility } = char.stats;
-    const base = power * 0.25 + speed * 0.15 + technique * 0.2 + intelligence * 0.15 + stamina * 0.15 + agility * 0.1;
-    const randomFactor = 0.85 + Math.random() * 0.3;
-    return Math.round(base * randomFactor);
-  };
-
   const startBattle = () => {
     if (!fighter1 || !fighter2) return;
     setBattleState('fighting');
-    setBattleLog([]);
+    setBattleResult(null);
 
-    const logs: string[] = [];
-    logs.push(`⚔️ ${fighter1.name} VS ${fighter2.name}`);
-    logs.push('Le combat commence !');
-
+    // Simulate after a brief suspense delay
     setTimeout(() => {
-      const score1 = calculateScore(fighter1);
-      const score2 = calculateScore(fighter2);
-
-      logs.push(`${fighter1.name.split(' ')[0]} utilise ${fighter1.skills[0]?.name || 'une attaque puissante'} !`);
-      logs.push(`${fighter2.name.split(' ')[0]} contre avec ${fighter2.skills[0]?.name || 'sa technique spéciale'} !`);
-
-      if (score1 > score2) {
-        logs.push(`💥 ${fighter1.name.split(' ')[0]} porte le coup final !`);
-        logs.push(`🏆 ${fighter1.name} remporte le combat !`);
-        setWinner(1);
-      } else if (score2 > score1) {
-        logs.push(`💥 ${fighter2.name.split(' ')[0]} porte le coup final !`);
-        logs.push(`🏆 ${fighter2.name} remporte le combat !`);
-        setWinner(2);
-      } else {
-        logs.push('⚡ Les deux combattants sont à égalité !');
-        setWinner(Math.random() > 0.5 ? 1 : 2);
-      }
-
-      setBattleLog(logs);
+      const result = simulateBattle(fighter1, fighter2);
+      setBattleResult(result);
+      setWinner(result.winner);
       setBattleState('result');
-    }, 2000);
+    }, 1500);
   };
 
   const resetBattle = () => {
     setBattleState('idle');
     setWinner(null);
-    setBattleLog([]);
+    setBattleResult(null);
   };
 
   const openSelector = (slot: 1 | 2) => {
