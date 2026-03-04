@@ -17,7 +17,7 @@ const BattleSimulator = () => {
   const [selectedAnime, setSelectedAnime] = useState<Anime | null>(null);
   const [battleState, setBattleState] = useState<'idle' | 'fighting' | 'result'>('idle');
   const [winner, setWinner] = useState<1 | 2 | null>(null);
-  const [battleLog, setBattleLog] = useState<string[]>([]);
+  const [battleResult, setBattleResult] = useState<BattleResult | null>(null);
 
   // For fighter 2, lock to the anime of fighter 1
   const selectorAnime = useMemo(() => {
