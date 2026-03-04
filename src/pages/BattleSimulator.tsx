@@ -6,6 +6,7 @@ import ParticleBackground from '@/components/ParticleBackground';
 import { animeData, Character, Anime } from '@/data/animeData';
 import { ArrowLeft, Swords, Zap, RefreshCcw, Crown, X, Plus, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { simulateBattle, BattleLogDisplay, BattleResult } from '@/components/BattleLog';
 
 type FighterChar = Character & { animeId: string; animeTitle: string; animeTheme: string };
 
