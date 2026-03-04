@@ -6,6 +6,7 @@ import ParticleBackground from '@/components/ParticleBackground';
 import { animeData, Character, Anime } from '@/data/animeData';
 import { ArrowLeft, Swords, Zap, RefreshCcw, Crown, X, Plus, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { simulateBattle, BattleLogDisplay, BattleResult } from '@/components/BattleLog';
 
 type FighterChar = Character & { animeId: string; animeTitle: string; animeTheme: string };
 
@@ -16,7 +17,7 @@ const BattleSimulator = () => {
   const [selectedAnime, setSelectedAnime] = useState<Anime | null>(null);
   const [battleState, setBattleState] = useState<'idle' | 'fighting' | 'result'>('idle');
   const [winner, setWinner] = useState<1 | 2 | null>(null);
-  const [battleLog, setBattleLog] = useState<string[]>([]);
+  const [battleResult, setBattleResult] = useState<BattleResult | null>(null);
 
   // For fighter 2, lock to the anime of fighter 1
   const selectorAnime = useMemo(() => {
@@ -52,54 +53,27 @@ const BattleSimulator = () => {
     setSelectedAnime(null);
     setBattleState('idle');
     setWinner(null);
-    setBattleLog([]);
-  };
-
-  const calculateScore = (char: Character) => {
-    const { power, speed, technique, intelligence, stamina, agility } = char.stats;
-    const base = power * 0.25 + speed * 0.15 + technique * 0.2 + intelligence * 0.15 + stamina * 0.15 + agility * 0.1;
-    const randomFactor = 0.85 + Math.random() * 0.3;
-    return Math.round(base * randomFactor);
+    setBattleResult(null);
   };
 
   const startBattle = () => {
     if (!fighter1 || !fighter2) return;
     setBattleState('fighting');
-    setBattleLog([]);
+    setBattleResult(null);
 
-    const logs: string[] = [];
-    logs.push(`⚔️ ${fighter1.name} VS ${fighter2.name}`);
-    logs.push('Le combat commence !');
-
+    // Simulate after a brief suspense delay
     setTimeout(() => {
-      const score1 = calculateScore(fighter1);
-      const score2 = calculateScore(fighter2);
-
-      logs.push(`${fighter1.name.split(' ')[0]} utilise ${fighter1.skills[0]?.name || 'une attaque puissante'} !`);
-      logs.push(`${fighter2.name.split(' ')[0]} contre avec ${fighter2.skills[0]?.name || 'sa technique spéciale'} !`);
-
-      if (score1 > score2) {
-        logs.push(`💥 ${fighter1.name.split(' ')[0]} porte le coup final !`);
-        logs.push(`🏆 ${fighter1.name} remporte le combat !`);
-        setWinner(1);
-      } else if (score2 > score1) {
-        logs.push(`💥 ${fighter2.name.split(' ')[0]} porte le coup final !`);
-        logs.push(`🏆 ${fighter2.name} remporte le combat !`);
-        setWinner(2);
-      } else {
-        logs.push('⚡ Les deux combattants sont à égalité !');
-        setWinner(Math.random() > 0.5 ? 1 : 2);
-      }
-
-      setBattleLog(logs);
+      const result = simulateBattle(fighter1, fighter2);
+      setBattleResult(result);
+      setWinner(result.winner);
       setBattleState('result');
-    }, 2000);
+    }, 1500);
   };
 
   const resetBattle = () => {
     setBattleState('idle');
     setWinner(null);
-    setBattleLog([]);
+    setBattleResult(null);
   };
 
   const openSelector = (slot: 1 | 2) => {
@@ -218,31 +192,8 @@ const BattleSimulator = () => {
 
             {/* Battle Log */}
             <AnimatePresence>
-              {battleLog.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="glass-card rounded-2xl p-6"
-                >
-                  <h3 className="font-display text-lg font-bold mb-4">Journal de Combat</h3>
-                  <div className="space-y-2">
-                    {battleLog.map((log, index) => (
-                      <motion.p
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.3 }}
-                        className={cn(
-                          "text-sm",
-                          log.includes('🏆') ? 'text-primary font-bold text-lg' : 'text-muted-foreground'
-                        )}
-                      >
-                        {log}
-                      </motion.p>
-                    ))}
-                  </div>
-                </motion.div>
+              {battleResult && fighter1 && fighter2 && (
+                <BattleLogDisplay fighter1={fighter1} fighter2={fighter2} result={battleResult} />
               )}
             </AnimatePresence>
           </div>
