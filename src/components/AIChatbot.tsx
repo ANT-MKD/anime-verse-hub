@@ -1,17 +1,26 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Bot, User, Loader2, Sparkles } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
+import { MessageCircle, X, Send, Bot, User, Loader2, Sparkles, RotateCcw } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 interface Message {
   role: 'user' | 'assistant';
   content: string;
 }
 
+const SUGGESTIONS = [
+  "🏐 Compare Hinata et Kageyama",
+  "⚔️ Qui est le plus fort entre Gojo et Sukuna ?",
+  "🎌 Recommande-moi un anime",
+  "🧠 Fais-moi un quiz anime !",
+  "🔥 Top 5 des combats les plus épiques",
+  "💀 Explique le Death Note",
+];
+
 const AIChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: 'Salut ! 👋 Je suis AnimeBot, ton expert anime ! Pose-moi des questions sur tes personnages préférés, demande des recommandations, ou discutons de tes moments favoris ! 🎌' }
+    { role: 'assistant', content: '### Salut ! 👋\nJe suis **AnimeBot**, ton expert anime alimenté par l\'IA !\n\nJe peux :\n- 📊 **Comparer** des personnages avec leurs stats\n- 🎯 **Recommander** des animes selon tes goûts\n- 🧠 Te faire passer un **quiz**\n- ⚔️ Analyser qui gagnerait un **combat**\n- 📖 Discuter des **arcs narratifs**\n\nPose-moi une question ou clique sur une suggestion ! 🎌' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -25,10 +34,11 @@ const AIChatbot = () => {
     scrollToBottom();
   }, [messages]);
 
-  const sendMessage = async () => {
-    if (!input.trim() || isLoading) return;
+  const sendMessage = async (overrideInput?: string) => {
+    const text = overrideInput || input;
+    if (!text.trim() || isLoading) return;
 
-    const userMessage: Message = { role: 'user', content: input };
+    const userMessage: Message = { role: 'user', content: text };
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
@@ -48,56 +58,70 @@ const AIChatbot = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Erreur de connexion');
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || 'Erreur de connexion');
       }
 
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
-
       if (!reader) throw new Error('No reader');
 
-      // Add empty assistant message
       setMessages(prev => [...prev, { role: 'assistant', content: '' }]);
+
+      let textBuffer = '';
 
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
 
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split('\n');
+        textBuffer += decoder.decode(value, { stream: true });
 
-        for (const line of lines) {
-          if (line.startsWith('data: ')) {
-            const data = line.slice(6).trim();
-            if (data === '[DONE]') continue;
+        let newlineIndex: number;
+        while ((newlineIndex = textBuffer.indexOf('\n')) !== -1) {
+          let line = textBuffer.slice(0, newlineIndex);
+          textBuffer = textBuffer.slice(newlineIndex + 1);
 
-            try {
-              const parsed = JSON.parse(data);
-              const content = parsed.choices?.[0]?.delta?.content;
-              if (content) {
-                assistantContent += content;
-                setMessages(prev => {
-                  const newMessages = [...prev];
-                  const lastMsg = newMessages[newMessages.length - 1];
-                  if (lastMsg.role === 'assistant') {
-                    lastMsg.content = assistantContent;
-                  }
-                  return newMessages;
-                });
-              }
-            } catch {
-              // Skip invalid JSON
+          if (line.endsWith('\r')) line = line.slice(0, -1);
+          if (!line.startsWith('data: ')) continue;
+
+          const jsonStr = line.slice(6).trim();
+          if (jsonStr === '[DONE]') continue;
+
+          try {
+            const parsed = JSON.parse(jsonStr);
+            const content = parsed.choices?.[0]?.delta?.content;
+            if (content) {
+              assistantContent += content;
+              setMessages(prev => {
+                const newMessages = [...prev];
+                const lastMsg = newMessages[newMessages.length - 1];
+                if (lastMsg.role === 'assistant') {
+                  lastMsg.content = assistantContent;
+                }
+                return [...newMessages];
+              });
             }
+          } catch {
+            textBuffer = line + '\n' + textBuffer;
+            break;
           }
         }
       }
     } catch (error) {
       console.error('Chat error:', error);
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Désolé, une erreur s\'est produite. Réessaie plus tard ! 😅' }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: '❌ Désolé, une erreur s\'est produite. Réessaie plus tard !' }]);
     } finally {
       setIsLoading(false);
     }
   };
+
+  const resetChat = () => {
+    setMessages([
+      { role: 'assistant', content: '### Salut ! 👋\nJe suis **AnimeBot**, ton expert anime alimenté par l\'IA !\n\nPose-moi une question ou clique sur une suggestion ! 🎌' }
+    ]);
+  };
+
+  const showSuggestions = messages.length <= 2 && !isLoading;
 
   return (
     <>
@@ -123,7 +147,7 @@ const AIChatbot = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] h-[550px] glass-card rounded-2xl overflow-hidden flex flex-col shadow-2xl"
+            className="fixed bottom-6 right-6 z-50 w-[400px] h-[600px] glass-card rounded-2xl overflow-hidden flex flex-col shadow-2xl border border-border"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-border bg-gradient-to-r from-primary/20 to-transparent">
@@ -139,15 +163,24 @@ const AIChatbot = () => {
                     AnimeBot
                     <Sparkles className="w-4 h-4 text-primary" />
                   </h3>
-                  <p className="text-xs text-muted-foreground">Expert Anime • En ligne</p>
+                  <p className="text-xs text-muted-foreground">Expert Anime • IA avancée</p>
                 </div>
               </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-full hover:bg-muted flex items-center justify-center transition-colors"
-              >
-                <X className="w-4 h-4" />
-              </button>
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={resetChat}
+                  className="w-8 h-8 rounded-full hover:bg-muted flex items-center justify-center transition-colors"
+                  title="Nouvelle conversation"
+                >
+                  <RotateCcw className="w-4 h-4 text-muted-foreground" />
+                </button>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="w-8 h-8 rounded-full hover:bg-muted flex items-center justify-center transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
             {/* Messages */}
@@ -157,7 +190,7 @@ const AIChatbot = () => {
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
+                  transition={{ delay: Math.min(index * 0.05, 0.3) }}
                   className={`flex gap-2 ${message.role === 'user' ? 'flex-row-reverse' : ''}`}
                 >
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
@@ -169,16 +202,23 @@ const AIChatbot = () => {
                       <Bot className="w-4 h-4 text-muted-foreground" />
                     )}
                   </div>
-                  <div className={`max-w-[75%] px-4 py-2 rounded-2xl ${
+                  <div className={`max-w-[80%] px-4 py-2.5 rounded-2xl ${
                     message.role === 'user' 
                       ? 'bg-primary text-primary-foreground rounded-tr-sm' 
                       : 'bg-muted text-foreground rounded-tl-sm'
                   }`}>
-                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                    {message.role === 'assistant' ? (
+                      <div className="text-sm prose prose-sm dark:prose-invert max-w-none prose-p:my-1 prose-ul:my-1 prose-ol:my-1 prose-li:my-0.5 prose-h3:text-sm prose-h3:font-bold prose-h3:my-1 prose-h2:text-base prose-h2:font-bold prose-h2:my-1.5 prose-strong:text-foreground prose-table:text-xs">
+                        <ReactMarkdown>{message.content}</ReactMarkdown>
+                      </div>
+                    ) : (
+                      <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                    )}
                   </div>
                 </motion.div>
               ))}
-              {isLoading && messages[messages.length - 1]?.role === 'user' && (
+
+              {isLoading && messages[messages.length - 1]?.role !== 'assistant' && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -187,11 +227,33 @@ const AIChatbot = () => {
                   <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
                     <Bot className="w-4 h-4 text-muted-foreground" />
                   </div>
-                  <div className="bg-muted px-4 py-2 rounded-2xl rounded-tl-sm">
-                    <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+                  <div className="bg-muted px-4 py-2 rounded-2xl rounded-tl-sm flex items-center gap-2">
+                    <Loader2 className="w-4 h-4 animate-spin text-primary" />
+                    <span className="text-xs text-muted-foreground">AnimeBot réfléchit...</span>
                   </div>
                 </motion.div>
               )}
+
+              {/* Suggestion chips */}
+              {showSuggestions && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex flex-wrap gap-2 pt-2"
+                >
+                  {SUGGESTIONS.map((suggestion, i) => (
+                    <button
+                      key={i}
+                      onClick={() => sendMessage(suggestion)}
+                      className="text-xs px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors"
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+
               <div ref={messagesEndRef} />
             </div>
 
@@ -209,7 +271,7 @@ const AIChatbot = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Pose ta question sur les animes..."
-                  className="flex-1 px-4 py-2 rounded-xl bg-muted border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm"
+                  className="flex-1 px-4 py-2.5 rounded-xl bg-muted border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm"
                   disabled={isLoading}
                 />
                 <motion.button
